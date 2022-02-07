@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] menu = {"Carribares","Agregar"};
+    String[] menu = {"Ver Carribares abiertos","Agregar un carri"};
     ListView listView;
 
     @Override
