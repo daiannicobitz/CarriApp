@@ -16,16 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
         TextView dbText = findViewById(R.id.db_text);
 
-        Carribar prueba = new Carribar(1);
+        System.out.println("LLego");
 
-
-        ViewModelProvider.AndroidViewModelFactory factory =
-                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
-
-        mViewModel = new ViewModelProvider(this, factory)
-                .get(CarribaresViewModel.class);
-
-        dbText.setText(mViewModel.getCarribares().get(0).getNombre());
+//        ViewModelProvider.AndroidViewModelFactory factory =
+//                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+//
+//        mViewModel = new ViewModelProvider(this, factory).get(CarribaresViewModel.class);
+//
+//        dbText.setText(mViewModel.getCarribares().get(0).getIdCarribar());
 
 //        mViewModel.getCarribares().observe(this, carribares -> {
 //                    StringBuilder sb = new StringBuilder();
