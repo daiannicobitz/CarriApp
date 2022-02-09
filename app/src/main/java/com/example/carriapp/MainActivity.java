@@ -16,6 +16,8 @@ import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "prueba")
                 .allowMainThreadQueries()
                 .build();
 //                Carribar carriPrueba = new Carribar(nombreCarribar ,"AA 7013","20","23",
@@ -46,7 +48,22 @@ public class MainActivity extends AppCompatActivity {
         botonAgregar.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 inicializarComponentes();
-                validarDatosVacios();
+
+                if(!validarDatosVacios()){
+                    System.out.println("Datos No vacios");
+                    if(validarFormato()){
+                        System.out.println("Datos bien formateados");
+
+                        Carribar carriPrueba = new Carribar(textoNombre ,textoDireccion,textoHoraApertura,textoHoraCierre,
+                        textoContacto, hamburguesa, choripan, pizza, papasFritas, pancho, milanesa, bondiola);
+
+                        db.carribarDao().insert(carriPrueba);
+                    }else{
+                        System.out.println("Datos mal formateados");
+                    }
+                }else{
+                    System.out.println("Datos vacios");
+                }
             }
         });
 
@@ -75,14 +92,13 @@ public class MainActivity extends AppCompatActivity {
         this.grupoBotones = ((RadioGroup)findViewById(R.id.radioGrupo));
     }
 
-    public void validarDatosVacios(){
+    public boolean validarDatosVacios(){
         if(     this.textoNombre.isEmpty() ||
                 this.textoDireccion.isEmpty()||
                 this.textoHoraApertura.isEmpty()||
                 this.textoHoraCierre.isEmpty()||
                 this.textoContacto.isEmpty()){
-            System.out.println("Strings Vacios");
-
+            return true;
         }
         if(     this.hamburguesa == false &&
                 this.choripan == false &&
@@ -91,12 +107,36 @@ public class MainActivity extends AppCompatActivity {
                 this.pizza == false &&
                 this.milanesa == false &&
                 this.bondiola == false){
-            System.out.println("CheckBox Vacios");
+            return true;
         }
 
         if(grupoBotones.getCheckedRadioButtonId() == -1){
-            System.out.println("Radio Button Vacios");
+            return true;
         }
+        return false;
+    }
+
+    public boolean validarFormato(){
+
+        String caracteresDireccion = "[A-Za-z]+\\s[0-9]";
+        String caracteresHora = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+
+        Pattern patronDireccion = Pattern.compile(caracteresDireccion);
+        Matcher emparejadorDireccion = patronDireccion.matcher(this.textoDireccion);
+
+        Pattern patronHora = Pattern.compile(caracteresHora);
+        Matcher emparejadorHoraApertura = patronHora.matcher(this.textoHoraApertura);
+        Matcher emparejadorHoraCierre = patronHora.matcher(this.textoHoraCierre);
+
+        boolean esCoincidente = emparejadorDireccion.find();
+        boolean esCoincidente1 = emparejadorHoraApertura.find();
+        boolean esCoincidente2 = emparejadorHoraCierre.find();
+
+        if(!esCoincidente) return false;
+        if(!esCoincidente1) return false;
+        if(!esCoincidente2) return false;
+
+        return true;
     }
 }
 
