@@ -8,13 +8,13 @@
     tools:context=".AgregarCarribarActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewChoripan"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         tools:srcCompat="@drawable/choripan" />
 
     <TextView
-        android:id="@+id/textViewNombre"
+        android:id="@+id/textViewAgregarCarri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar Carribar" />
@@ -28,7 +28,7 @@
         android:hint="Nombre" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -36,7 +36,7 @@
         android:hint="Direccion" />
 
     <EditText
-        android:id="@+id/editTextTime"
+        android:id="@+id/editTextHoraApertura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -44,7 +44,7 @@
         android:hint="Horario apertura" />
 
     <EditText
-        android:id="@+id/editTextTime2"
+        android:id="@+id/editTextHoraCierre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -58,46 +58,46 @@
         android:text="Menu" />
 
     <CheckBox
-        android:id="@+id/checkBox1"
+        android:id="@+id/checkBoxHayHamburguesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HAMBURGUESA" />
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/checkBoxHayChoripan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CHORIPAN" />
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/checkBoxHayPizza"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PIZZA" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/checkBoxHayPapasFritas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PAPAS FRITAS" />
 
     <CheckBox
-        android:id="@+id/checkBox5"
+        android:id="@+id/checkBoxHayPancho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="PANCHO" />
 
     <CheckBox
-        android:id="@+id/checkBox6"
+        android:id="@+id/checkBoxHayMilanesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="MILANESA" />
     <CheckBox
-        android:id="@+id/checkBox7"
+        android:id="@+id/checkBoxHayBondiola"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BONDIOLA" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/editTextMultilineInfoContacto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -106,35 +106,36 @@
         android:hint="Informacion de contacto"/>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewDuracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Por cuanto quires que se vea el carri" />
 
     <RadioGroup
+        android:id="@+id/radioGrupo"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radioButtonUnDia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Solo por hoy" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonUnaSemana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Por una semana" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButtonUnMes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasta fin de mes" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonAgregarCarribar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Agregar Carribar" />
