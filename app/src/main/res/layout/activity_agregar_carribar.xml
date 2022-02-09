@@ -14,13 +14,13 @@
         tools:srcCompat="@drawable/choripan" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar Carribar" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -132,6 +132,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasta fin de mes" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Carribar" />
     </RadioGroup>
 
 
