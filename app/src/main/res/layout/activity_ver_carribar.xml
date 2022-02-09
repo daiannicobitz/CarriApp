@@ -9,37 +9,37 @@
     tools:context=".VerCarribarActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOMBRE" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewDireccion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DIRECCION" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewDistancia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="DISTANCIA EN METROS" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewHoraApertura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HORA APERTURA" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewHoraCierre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="HORA CIERRE" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewContacto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CONTACTO" />
