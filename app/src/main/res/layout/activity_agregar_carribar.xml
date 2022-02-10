@@ -185,7 +185,7 @@
     <RadioGroup
         android:id="@+id/radioGrupo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" >
 
         <RadioButton
             android:id="@+id/radioButtonUnDia"
@@ -205,13 +205,22 @@
             android:layout_height="wrap_content"
             android:text="Hasta fin de mes" />
 
-        <Button
-            android:id="@+id/buttonAgregarCarribar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Agregar Carribar"
-            android:background="@color/rojo"/>
+
+
     </RadioGroup>
 
+    <Button
+        android:id="@+id/buttonAgregarCarribar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agregar Carribar"
+        android:background="@color/rojo"/>
+
+    <Button
+        android:id="@+id/buttonCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:background="@color/azul_oscuro"/>
 
 </LinearLayout>
