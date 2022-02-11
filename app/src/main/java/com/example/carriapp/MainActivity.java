@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
 //        System.out.println(db.carribarDao().count());
 
         List<Carribar> listaCarribares = db.carribarDao().getAllCarribares();
-
         Carribar carriPrueba2 = listaCarribares.get(0);
-
         textViewNombreCarribar.setText(carriPrueba2.getNombre());
 
 
