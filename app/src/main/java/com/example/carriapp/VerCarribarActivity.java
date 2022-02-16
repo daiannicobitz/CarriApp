@@ -1,20 +1,24 @@
 package com.example.carriapp;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
+import com.example.carriapp.ui.MapasActivity;
 
 import java.util.List;
 
 public class VerCarribarActivity extends AppCompatActivity {
 
     AppDataBase db;
+    Button botonLlevame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +38,15 @@ public class VerCarribarActivity extends AppCompatActivity {
 //        db.carribarDao().insert(carriPrueba);
 //
 //        System.out.println(db.carribarDao().count());
-
-
-
-        inicializarComponentes();
+        //inicializarComponentes();
+        botonLlevame = (Button) findViewById(R.id.buttonLlevame);
+        botonLlevame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), MapasActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
 
     }
 
