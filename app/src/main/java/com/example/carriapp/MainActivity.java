@@ -1,39 +1,38 @@
 package com.example.carriapp;
 
-
-import android.content.Intent;
+import android.arch.lifecycle.ViewModelProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button botonAgregar;
-    Button botonVer;
+    private CarribaresViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        botonAgregar = (Button) findViewById(R.id.buttonAgregar);
-        botonAgregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), AgregarCarribarActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
+        TextView dbText = findViewById(R.id.db_text);
 
-        botonVer = (Button) findViewById(R.id.button2Ver);
-        botonVer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), VerCarribarActivity.class);
-                startActivityForResult(intent, 0);
-            }
-        });
+        System.out.println("LLego");
+
+//        ViewModelProvider.AndroidViewModelFactory factory =
+//                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
+//
+//        mViewModel = new ViewModelProvider(this, factory).get(CarribaresViewModel.class);
+//
+//        dbText.setText(mViewModel.getCarribares().get(0).getIdCarribar());
+
+//        mViewModel.getCarribares().observe(this, carribares -> {
+//                    StringBuilder sb = new StringBuilder();
+//                    for (Carribar carri : carribares) {
+//                        sb.append(carri.getNombre()).append("\n");
+//                    }
+//                    dbText.setText(sb.toString());
+//                }
+//        );
+
     }
-
 }
