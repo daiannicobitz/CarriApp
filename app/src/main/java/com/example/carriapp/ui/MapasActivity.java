@@ -3,7 +3,11 @@ package com.example.carriapp.ui;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,10 +28,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.util.List;
+import java.util.Locale;
+
 public class MapasActivity extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallback {
 
     private GoogleMap mMap;
-    private MarkerOptions inicio, fin;
+    private MarkerOptions markinicio, markfin;
     private Polyline currentPolyline;
     Button getDirection;
 
@@ -39,9 +46,17 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
 
         getDirection = findViewById(R.id.btnGetDirection);
 
+        Location inicio = new Location("localizacion 1");
+        inicio.setLatitude(-31.732970);  //latitud
+        inicio.setLongitude(-60.535388); //longitud
+        Location fin = new Location("localizacion 2");
+        fin.setLatitude(-31.729053);  //latitud
+        fin.setLongitude(-60.530357); //longitud
+        double distance = inicio.distanceTo(fin);
 
-        inicio = new MarkerOptions().position(new LatLng(27.658143, 85.3199503)).title("Location 1");
-        fin = new MarkerOptions().position(new LatLng(27.667491, 85.3208583)).title("Location 2");
+
+        markinicio = new MarkerOptions().position(new LatLng(-31.732970, -60.535388)).title("Libertad 226");
+        markfin = new MarkerOptions().position(new LatLng(-31.729053, -60.530357)).title("Location 2");
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.choripan));
 
         SupportMapFragment mapFragment;
@@ -52,7 +67,12 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
             @Override
             public void onClick(View view) {
                 actualizarMapa();
-                new FetchURL(MapasActivity.this).execute(getUrl(inicio.getPosition(), fin.getPosition(), "driving"), "driving");
+                new FetchURL(MapasActivity.this).execute(getUrl(markinicio.getPosition(), markfin.getPosition(), "driving"), "driving");
+//                new GetCoordinates().execute("1600 Amphitheatre Parkway, Mountain View, CA");
+                System.out.println(" AAAAAAAAA" + determineLatLngFromAddress(MapasActivity.this, "Libertad 226 , Parana" ));
+                System.out.println("DISTANCIAAA" + distance);
+
+
             }
         });
 
@@ -69,11 +89,32 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
                 .title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         Log.d("mylog", "Added Markers");
-        mMap.addMarker(inicio);
-        mMap.addMarker(fin);
+        mMap.addMarker(markinicio);
+        mMap.addMarker(markfin);
     }
 
-    private String getUrl(LatLng origin, LatLng dest, String directionMode) {
+
+    public LatLng determineLatLngFromAddress(Context appContext, String strAddress) {
+        LatLng latLng = null;
+        Geocoder geocoder = new Geocoder(appContext, Locale.getDefault());
+        List<Address> geoResults = null;
+
+        try {
+            geoResults = geocoder.getFromLocationName(strAddress, 1);
+            while (geoResults.size()==0) {
+                geoResults = geocoder.getFromLocationName(strAddress, 1);
+            }
+            if (geoResults.size()>0) {
+                Address addr = geoResults.get(0);
+                latLng = new LatLng(addr.getLatitude(),addr.getLongitude());
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+
+        return latLng; //LatLng value of address
+    }
+        private String getUrl(LatLng origin, LatLng dest, String directionMode) {
         // Origin of route
         String str_origin = "origin=" + origin.latitude + "," + origin.longitude;
         // Destination of route
