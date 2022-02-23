@@ -64,13 +64,17 @@ public class Carribar {
     @ColumnInfo(name = "bondiola")
     private Boolean hayBondiola;
 
+    @NonNull
+    @ColumnInfo(name = "imagen", typeAffinity = ColumnInfo.BLOB)
+    private byte [] imagen;
+
     public Carribar( @NonNull String nombre,
                     @NonNull String direccion, @NonNull String horaApertura,
                     @NonNull String horaCierre, @NonNull String contacto,
                     @NonNull Boolean hayHamburguesa, @NonNull Boolean hayChoripan,
                     @NonNull Boolean hayPizza, @NonNull Boolean hayPapasFritas,
                     @NonNull Boolean hayPancho, @NonNull Boolean hayMilanesa,
-                    @NonNull Boolean hayBondiola) {
+                    @NonNull Boolean hayBondiola , @NonNull byte[] imagen) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.horaApertura = horaApertura;
@@ -83,6 +87,7 @@ public class Carribar {
         this.hayPancho = hayPancho;
         this.hayMilanesa = hayMilanesa;
         this.hayBondiola = hayBondiola;
+        this.imagen = imagen;
     }
 
     public long getIdCarribar() {
@@ -188,4 +193,8 @@ public class Carribar {
     public void setHayBondiola(Boolean hayBondiola) {
         this.hayBondiola = hayBondiola;
     }
+
+    public byte[] getImagen() { return imagen;   }
+
+    public void setImagen(byte[] imagen) { this.imagen = imagen; }
 }
