@@ -1,38 +1,40 @@
 package com.example.carriapp;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.arch.persistence.room.Room;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.carriapp.DataBase.AppDataBase;
+import com.example.carriapp.Entidades.Carribar;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
-    private CarribaresViewModel mViewModel;
+    AppDataBase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class,"produccion")
+                .allowMainThreadQueries()
+                .build();
 
-        TextView dbText = findViewById(R.id.db_text);
+        com.example.carriapp.Entidades.Carribar carriPrueba = new com.example.carriapp.Entidades.Carribar("prueba2","AA 7013","20","23",
+                "3434474355", true, true, false, false, false,
+                false, true);
 
-        System.out.println("LLego");
+        db.carribarDao().insert(carriPrueba);
 
-//        ViewModelProvider.AndroidViewModelFactory factory =
-//                ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication());
-//
-//        mViewModel = new ViewModelProvider(this, factory).get(CarribaresViewModel.class);
-//
-//        dbText.setText(mViewModel.getCarribares().get(0).getIdCarribar());
+        System.out.println("ACA LLEGÓ");
 
-//        mViewModel.getCarribares().observe(this, carribares -> {
-//                    StringBuilder sb = new StringBuilder();
-//                    for (Carribar carri : carribares) {
-//                        sb.append(carri.getNombre()).append("\n");
-//                    }
-//                    dbText.setText(sb.toString());
-//                }
-//        );
+        System.out.println(db.carribarDao().count());
 
+        List<Carribar> listaCarribares = db.carribarDao().getAllCarribares();
+
+        System.out.println(listaCarribares.get(0).getDireccion());
     }
 }

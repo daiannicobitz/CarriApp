@@ -17,7 +17,7 @@ public interface CarribarDAO {
     @Query("SELECT COUNT(*) FROM " + Carribar.TABLE_NAME)
     int count(); //metodo
 
-    //seleccionar todo
+    //seleccionar all
     @Query("SELECT * FROM "+Carribar.TABLE_NAME)
     List<Carribar> getAllCarribares();
 
