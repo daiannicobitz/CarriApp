@@ -15,10 +15,9 @@
     tools:context=".VerCarribarActivity">
 
     <ImageView
+        android:id="@+id/imagenCarribar"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
-        app:srcCompat="@drawable/choripan">
-
+        android:layout_height="86dp">
     </ImageView>
 
     <TextView

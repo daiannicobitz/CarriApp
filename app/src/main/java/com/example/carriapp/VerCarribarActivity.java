@@ -4,9 +4,10 @@ import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.carriapp.Config.Constantes;
+import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
 
@@ -23,20 +24,9 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
 
-        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "prueba2")
                 .allowMainThreadQueries()
                 .build();
-
-//        Carribar carriPrueba = new Carribar("prueba2","AAsaa 7013","20","23",
-//                "3434474355", true, true, false, false, false,
-//                false, true);
-//
-//        db.carribarDao().insert(carriPrueba);
-//
-//        System.out.println(db.carribarDao().count());
-
-
-
         inicializarComponentes();
 
     }
@@ -45,6 +35,8 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         List<Carribar> listaCarribares = db.carribarDao().getAllCarribares();
         Carribar carribarAMostrar = listaCarribares.get(0);
+
+        ((ImageView) findViewById(R.id.imagenCarribar)).setImageBitmap(DataConverter.convertByteArrayToImgae(carribarAMostrar.getImagen()));
 
         ((TextView) findViewById(R.id.textViewNombre)).setText(carribarAMostrar.getNombre());
         ((TextView) findViewById(R.id.textViewDireccion)).setText(carribarAMostrar.getDireccion());

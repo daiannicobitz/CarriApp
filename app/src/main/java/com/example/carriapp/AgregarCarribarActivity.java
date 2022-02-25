@@ -39,7 +39,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba22")
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba2")
                 .allowMainThreadQueries()
                 .build();
 
@@ -74,7 +74,6 @@ public class AgregarCarribarActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
             }
         });
 
@@ -119,7 +118,8 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                 this.textoDireccion.isEmpty()||
                 this.textoHoraApertura.isEmpty()||
                 this.textoHoraCierre.isEmpty()||
-                this.textoContacto.isEmpty()){
+                this.textoContacto.isEmpty() ||
+                this.bitmapImagen == null){
             return true;
         }
         if(     this.hamburguesa == false &&
