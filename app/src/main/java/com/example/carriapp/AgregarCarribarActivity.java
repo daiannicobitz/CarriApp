@@ -1,10 +1,10 @@
 package com.example.carriapp;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
@@ -32,7 +31,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
     Bitmap bitmapImagen;
 
     ImageView imageView;
-    final int CAMARA_INTENT = 51;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     AppDataBase db;
 
     @Override
@@ -40,9 +39,9 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-//        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba")
-//                .allowMainThreadQueries()
-//                .build();
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba22")
+                .allowMainThreadQueries()
+                .build();
 
         imageView = (ImageView) findViewById(R.id.imageViewFotoTomada);
         bitmapImagen = null;
@@ -72,29 +71,23 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         this.botonTomarFoto = (Button) findViewById(R.id.buttonTomarFoto);
         botonTomarFoto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if(intent.resolveActivity(getPackageManager()) !=null){
-                    startActivityForResult(intent, CAMARA_INTENT);
-                }
+                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+
             }
         });
 
     }
 
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, @Nullable Intent data){
+    protected void onActivityResult (int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        switch (requestCode){
-            case CAMARA_INTENT:
 
-                    bitmapImagen = (Bitmap) data.getExtras().get("data");
-                    if (bitmapImagen != null){
-                        imageView.setImageBitmap(bitmapImagen);
-                    }
-                    else{
-                        Toast.makeText(this, "Bitmap nulo",Toast.LENGTH_SHORT).show();
-                    }
-                break;
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK ){
+            Bundle extras = data.getExtras();
+            bitmapImagen = (Bitmap) extras.get ("data");
+            imageView.setImageBitmap(bitmapImagen);
         }
     }
 
