@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
-import com.example.carriapp.ui.MapasActivity;
 
 import java.util.List;
 

@@ -33,7 +33,7 @@
             android:name=".VerCarribarActivity">
         </activity>
         <activity
-            android:name=".ui.MapasActivity">
+            android:name=".MapasActivity">
         </activity>
     </application>
 

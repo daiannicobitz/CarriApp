@@ -1,4 +1,4 @@
-package com.example.carriapp.ui;
+package com.example.carriapp;
 
 
 import android.Manifest;
@@ -16,9 +16,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.carriapp.FetchURL;
-import com.example.carriapp.R;
-import com.example.carriapp.TaskLoadedCallback;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -42,7 +39,6 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
         getDirection = findViewById(R.id.btnGetDirection);
 
