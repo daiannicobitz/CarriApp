@@ -1,26 +1,22 @@
-package com.example.carriapp.ui.gallery;
+package com.example.carriapp.ui.AgregarCarribar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.arch.lifecycle.ViewModelProvider;
 
-import com.example.carriapp.databinding.FragmentGalleryBinding;
+import com.example.carriapp.databinding.ActivityAgregarCarribarBinding;
 
-public class GalleryFragment extends Fragment {
+public class AgregarCarribarFragment extends Fragment {
 
-    private FragmentGalleryBinding binding;
+    private ActivityAgregarCarribarBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GalleryViewModel galleryViewModel =
-                new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(GalleryViewModel.class);
 
-        binding = FragmentGalleryBinding.inflate(inflater, container, false);
+        binding = ActivityAgregarCarribarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         return root;

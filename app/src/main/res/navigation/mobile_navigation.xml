@@ -14,12 +14,12 @@
     <fragment
         android:id="@+id/nav_add_new_carri"
         android:label="@string/menu_gallery"
-        android:name="com.example.carriapp.ui.gallery.GalleryFragment"
+        android:name="com.example.carriapp.ui.AgregarCarribar.AgregarCarribarFragment"
         tools:layout="@layout/activity_agregar_carribar" />
 
     <fragment
         android:id="@+id/nav_view_carri"
         android:label="@string/menu_slideshow"
-        android:name="com.example.carriapp.ui.slideshow.SlideshowFragment"
+        android:name="com.example.carriapp.ui.VerCarribar.VerCarribarFragment"
         tools:layout="@layout/activity_ver_carribar" />
 </navigation>
