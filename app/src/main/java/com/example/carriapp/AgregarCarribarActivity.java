@@ -27,7 +27,6 @@ public class AgregarCarribarActivity extends AppCompatActivity {
     Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola,btnDia,btnSemana,btnMes;
     Button botonAgregar, botonTomarFoto;
     RadioGroup grupoBotones;
-    byte[] imagen;
     Bitmap bitmapImagen;
 
     ImageView imageView;
