@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgregarCarribarActivity">
+
+
+    <LinearLayout
+        android:id="@+id/agregarCarribar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/clarito">
+
+        <ImageView
+            android:id="@+id/imageViewChoripan"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/choripan"
+            tools:visibility="visible"
+            android:background="@color/rojo"/>
+
+        <TextView
+            android:id="@+id/textViewAgregarCarri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Carribar"
+            android:padding="5dp"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:background="@color/agua"/>
+
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Nombre" />
+
+        <EditText
+            android:id="@+id/editTextDireccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Direccion" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/editTextHoraApertura"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="Horario apertura" />
+
+            <EditText
+                android:id="@+id/editTextHoraCierre"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="Horario cierre" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menu"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:background="@color/agua"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:background="@color/rojo"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayHamburguesa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="HAMBURGUESA"
+                    android:background="@color/clarito"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayChoripan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CHORIPAN"
+                    android:background="@color/clarito"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayPizza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PIZZA"
+                    android:background="@color/clarito"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayPapasFritas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PAPAS FRITAS"
+                    android:background="@color/clarito"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2">>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayPancho"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PANCHO"
+                    android:background="@color/clarito"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayMilanesa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="MILANESA"
+                    android:background="@color/clarito"/>
+
+                <CheckBox
+                    android:id="@+id/checkBoxHayBondiola"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="BONDIOLA"
+                    android:background="@color/clarito"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/clarito">
+                </TextView>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+
+        <EditText
+            android:id="@+id/editTextMultilineInfoContacto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:hint="Informacion de contacto"
+            android:minLines="2"
+            android:maxLines="4"/>
+
+        <TextView
+            android:id="@+id/textViewDuracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Por cuanto quieres que se vea el carri"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:background="@color/agua"/>
+
+        <RadioGroup
+            android:id="@+id/radioGrupo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/radioButtonUnDia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solo por hoy" />
+
+            <RadioButton
+                android:id="@+id/radioButtonUnaSemana"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Por una semana" />
+
+            <RadioButton
+                android:id="@+id/radioButtonUnMes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hasta fin de mes" />
+
+
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/buttonAgregarCarribar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar Carribar"
+            android:background="@color/rojo"/>
+
+        <Button
+            android:id="@+id/buttonCancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:background="@color/azul_oscuro"/>
+
+    </LinearLayout>
+
+
+</ScrollView>

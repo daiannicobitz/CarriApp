@@ -1,9 +1,13 @@
 package com.example.carriapp;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.persistence.room.Room;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -11,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
