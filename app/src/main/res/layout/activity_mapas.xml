@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:id="@+id/mapa"
         tools:context=".MapasActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/btnGetDirection"
