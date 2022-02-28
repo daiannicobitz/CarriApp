@@ -12,9 +12,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
 import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.CarribarView;
+import com.example.carriapp.databinding.ActivityDrawerBinding;
 
 import java.util.List;
 
