@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
@@ -26,7 +27,7 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
 
-        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "prueba2")
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
         inicializarComponentes();

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
@@ -38,7 +39,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba2")
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
 

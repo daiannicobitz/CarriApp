@@ -33,7 +33,7 @@
                 android:foregroundGravity="center"
                 android:paddingLeft="14dp"
                 android:paddingRight="14dp"
-                app:srcCompat="@drawable/ic_carriimagen" />
+                app:srcCompat="@drawable/choripan" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
