@@ -11,8 +11,6 @@ public abstract class AppDataBase extends RoomDatabase {
 
     @SuppressWarnings("WeakerAccess")
     public abstract CarribarDAO carribarDao();
-    /**
-     * The only instance
-     */
+
     private static AppDataBase sInstance; //variable.
 }

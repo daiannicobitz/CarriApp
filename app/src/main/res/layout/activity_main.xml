@@ -4,12 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
 
     <Button
         android:id="@+id/buttonAgregar"
@@ -22,5 +18,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ver" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/tenedor_y_cuchillo"
+            android:layout_width="169dp"
+            android:layout_height="175dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/tenedor_y_cuchillo" />
+
+        <ImageView
+            android:id="@+id/choripan"
+            android:layout_width="166dp"
+            android:layout_height="152dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@drawable/choripan" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Bienvenidos a"
+            android:textSize="35dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CarriApp"
+            android:textSize="40dp" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,32 +1,43 @@
 package com.example.carriapp;
 
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import com.example.carriapp.Config.Constantes;
+import com.example.carriapp.DataBase.AppDataBase;
+import com.example.carriapp.Entidades.CarribarView;
 
-import com.example.carriapp.databinding.ActivityDrawerBinding;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
 
     Button botonAgregar;
     Button botonVer;
     AppBarConfiguration mAppBarConfiguration;
     ActivityDrawerBinding binding;
 
+    AppDataBase db;
+    RecyclerView listaCarribar;
+    List<CarribarView> listaCarribares;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
+                .allowMainThreadQueries()
+                .build();
 
         botonAgregar = (Button) findViewById(R.id.buttonAgregar);
         botonAgregar.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         botonVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), VerCarribarActivity.class);
+                Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
@@ -69,5 +80,6 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
 
 }

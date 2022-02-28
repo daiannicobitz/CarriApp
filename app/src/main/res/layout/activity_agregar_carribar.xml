@@ -59,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
+            android:minHeight="48dp"
             android:inputType="time"
             android:hint="Horario apertura" />
 
@@ -67,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:ems="10"
+            android:minHeight="48dp"
             android:inputType="time"
             android:hint="Horario cierre" />
 
@@ -101,29 +103,33 @@
                 android:id="@+id/checkBoxHayHamburguesa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HAMBURGUESA"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="HAMBURGUESA" />
 
             <CheckBox
                 android:id="@+id/checkBoxHayChoripan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CHORIPAN"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="CHORIPAN" />
 
             <CheckBox
                 android:id="@+id/checkBoxHayPizza"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PIZZA"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="PIZZA" />
 
             <CheckBox
                 android:id="@+id/checkBoxHayPapasFritas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PAPAS FRITAS"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="PAPAS FRITAS" />
         </LinearLayout>
 
         <LinearLayout
@@ -136,28 +142,37 @@
                 android:id="@+id/checkBoxHayPancho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PANCHO"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="PANCHO" />
 
             <CheckBox
                 android:id="@+id/checkBoxHayMilanesa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="MILANESA"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="MILANESA" />
 
             <CheckBox
                 android:id="@+id/checkBoxHayBondiola"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="BONDIOLA"
-                android:background="@color/clarito"/>
+                android:background="@color/clarito"
+                android:minHeight="48dp"
+                android:text="BONDIOLA" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/clarito">
             </TextView>
+
+            <RadioButton
+                android:id="@+id/radioButtonUnDia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Solo por hoy" />
 
         </LinearLayout>
 
@@ -194,12 +209,6 @@
         android:layout_height="wrap_content" >
 
         <RadioButton
-            android:id="@+id/radioButtonUnDia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Solo por hoy" />
-
-        <RadioButton
             android:id="@+id/radioButtonUnaSemana"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -210,10 +219,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hasta fin de mes" />
-
-
-
     </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonTomarFoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tomar Foto"
+        android:background="@color/rojo"/>
+
+    <ImageView
+        android:id="@+id/imageViewFotoTomada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/buttonAgregarCarribar"

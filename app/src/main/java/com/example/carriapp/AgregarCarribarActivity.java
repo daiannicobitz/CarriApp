@@ -9,9 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -27,9 +34,12 @@ public class AgregarCarribarActivity extends AppCompatActivity {
 
     String textoNombre,textoDireccion,textoHoraApertura,textoHoraCierre,textoContacto;
     Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola,btnDia,btnSemana,btnMes;
-    Button botonAgregar;
+    Button botonAgregar, botonTomarFoto;
     RadioGroup grupoBotones;
+    Bitmap bitmapImagen;
 
+    ImageView imageView;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     AppDataBase db;
 
     @Override
@@ -37,10 +47,12 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "prueba")
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
 
+        imageView = (ImageView) findViewById(R.id.imageViewFotoTomada);
+        bitmapImagen = null;
 
         this.botonAgregar = (Button) findViewById(R.id.buttonAgregarCarribar);
         botonAgregar.setOnClickListener(new View.OnClickListener() {
@@ -53,8 +65,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                         System.out.println("Datos bien formateados");
 
                         Carribar carriPrueba = new Carribar(textoNombre ,textoDireccion,textoHoraApertura,textoHoraCierre,
-                                textoContacto, hamburguesa, choripan, pizza, papasFritas, pancho, milanesa, bondiola);
-
+                                textoContacto, hamburguesa, choripan, pizza, papasFritas, pancho, milanesa, bondiola, DataConverter.convertImageToByteArray(bitmapImagen));
                         db.carribarDao().insert(carriPrueba);
                     }else{
                         System.out.println("Datos mal formateados");
@@ -65,10 +76,27 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             }
         });
 
+        this.botonTomarFoto = (Button) findViewById(R.id.buttonTomarFoto);
+        botonTomarFoto.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+            }
+        });
 
     }
 
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
 
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK ){
+            Bundle extras = data.getExtras();
+            bitmapImagen = (Bitmap) extras.get ("data");
+            imageView.setImageBitmap(bitmapImagen);
+        }
+    }
 
     public void inicializarComponentes(){
 
@@ -98,7 +126,8 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                 this.textoDireccion.isEmpty()||
                 this.textoHoraApertura.isEmpty()||
                 this.textoHoraCierre.isEmpty()||
-                this.textoContacto.isEmpty()){
+                this.textoContacto.isEmpty() ||
+                this.bitmapImagen == null){
             return true;
         }
         if(     this.hamburguesa == false &&

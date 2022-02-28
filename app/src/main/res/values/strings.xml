@@ -9,4 +9,5 @@
     <string name="menu_home">Menu Principal</string>
     <string name="menu_gallery">Agregar un carribar</string>
     <string name="menu_slideshow">Ver un carribar</string>
+    <string name="google_maps_key">AIzaSyApLOhLviIkETCALJ_tpsSt8X9NkJWMYPc</string>
 </resources>
