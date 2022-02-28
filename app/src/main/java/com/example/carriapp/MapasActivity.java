@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -24,6 +26,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 import java.util.Locale;
@@ -34,11 +38,15 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
     private MarkerOptions markinicio, markfin;
     private Polyline currentPolyline;
     Button getDirection;
+    private FusedLocationProviderClient fusedLocationClient;
 
+    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         getDirection = findViewById(R.id.btnGetDirection);
 
@@ -50,16 +58,16 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
         fin.setLongitude(-60.530357); //longitud
         double distance = inicio.distanceTo(fin);
 
-
         markinicio = new MarkerOptions().position(new LatLng(-31.732970, -60.535388)).title("Libertad 226");
         markfin = new MarkerOptions().position(new LatLng(-31.729053, -60.530357)).title("Location 2");
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.choripan));
 
         SupportMapFragment mapFragment;
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
+        mapFragment =  (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
 
         getDirection.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("MissingPermission")
             @Override
             public void onClick(View view) {
                 actualizarMapa();
@@ -69,9 +77,24 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
                 System.out.println("DISTANCIAAA" + distance);
 
 
+
             }
         });
 
+    }
+
+    private void getLocation(){
+        @SuppressLint("MissingPermission")
+        Task<Location> locationTask = fusedLocationClient.getLastLocation();
+
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location!=null){
+                    System.out.println( location.toString() + "  " + location.getLatitude());
+                }
+            }
+        });
     }
 
     @Override
@@ -145,6 +168,7 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},9999);
         } else {
             ejecutarActualizacionMapa();
+            getLocation();
         }
     }
 
