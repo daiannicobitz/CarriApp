@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         //REGISTRO LOS INTENT
         intFilt.addAction(MyReceiver1.EVENTO_01);
         this.registerReceiver(rec,intFilt);
-        //this.createNotificationChannel();
+        this.createNotificationChannel();
 
         botonAgregar = (Button) findViewById(R.id.buttonAgregar);
         botonAgregar.setOnClickListener(new View.OnClickListener() {
