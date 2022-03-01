@@ -36,11 +36,6 @@ public class CarribarView implements Serializable {
         this.direccion = direccion;
         this.horaCierre = horaCierre;
     }
-
-    public CarribarView() {
-
-    }
-
     public long getIdCarribar() {
         return idCarribar;
     }
