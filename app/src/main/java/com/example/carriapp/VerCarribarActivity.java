@@ -2,7 +2,9 @@ package com.example.carriapp;
 
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -14,13 +16,19 @@ import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 public class VerCarribarActivity extends AppCompatActivity {
 
     AppDataBase db;
     Button botonLlevame, botonVolver;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +59,7 @@ public class VerCarribarActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void inicializarComponentes(){
 
         List<Carribar> listaCarribares = db.carribarDao().getAllCarribares();
@@ -62,9 +71,38 @@ public class VerCarribarActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.textViewDireccion)).setText(carribarAMostrar.getDireccion());
         ((TextView) findViewById(R.id.textViewDistancia)).setText("Calcular Distancia");
 
-        //Calcular hora si esta abierto o cerrado y cambiar visibilidad
-        ((TextView) findViewById(R.id.textViewHoraCierre)).setText(carribarAMostrar.getHoraCierre());
-        ((TextView) findViewById(R.id.textViewHoraApertura)).setText(carribarAMostrar.getHoraApertura());
+        TextView horaCarribarAbierto = (TextView) findViewById(R.id.textViewHoraApertura);
+        TextView horaCarribarCerrado = (TextView) findViewById(R.id.textViewHoraCierre);
+        TextView carribarAbierto = (TextView) findViewById(R.id.textViewAbierto);
+        TextView carribarCerrado = (TextView) findViewById(R.id.textViewCerrado);
+
+
+        horaCarribarCerrado.setText("Cierra: " + carribarAMostrar.getHoraCierre());
+        horaCarribarAbierto.setText("Abre: " + carribarAMostrar.getHoraApertura());
+
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        df.setTimeZone(TimeZone.getTimeZone("America/Argentina/Buenos_Aires"));
+
+        LocalTime horaCierre = LocalTime.parse( carribarAMostrar.getHoraCierre()); //00:50
+        LocalTime horaApertura = LocalTime.parse( carribarAMostrar.getHoraApertura()); //22:14
+        LocalTime horaActual = LocalTime.parse(df.format(date)); //1 si horaApertura > horaCierre
+
+        if(horaActual.compareTo(horaApertura) == 1 && horaCierre.compareTo(horaActual) == 1){
+            System.out.println("ABIERTOOO");
+            carribarAbierto.setVisibility(View.VISIBLE);
+            carribarCerrado.setVisibility(View.GONE);
+            horaCarribarAbierto.setVisibility(View.GONE);
+            horaCarribarCerrado.setVisibility(View.VISIBLE);
+        }else{
+            System.out.println("CERRADO");
+            carribarAbierto.setVisibility(View.GONE);
+            carribarCerrado.setVisibility(View.VISIBLE);
+            horaCarribarAbierto.setVisibility(View.VISIBLE);
+            horaCarribarCerrado.setVisibility(View.GONE);
+        }
+
+        System.out.println(horaApertura.compareTo(horaCierre));
 
         ((TextView) findViewById(R.id.textViewContacto)).setText(carribarAMostrar.getContacto());
 
