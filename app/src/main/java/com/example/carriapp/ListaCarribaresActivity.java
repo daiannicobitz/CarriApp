@@ -48,7 +48,7 @@ public class ListaCarribaresActivity extends AppCompatActivity {
     }
 
     public void moveToDescription(CarribarView item){
-        Intent intent = new Intent(this, DescriptionActivity.class);
+        Intent intent = new Intent(this, VerCarribarActivity.class);
         intent.putExtra("CarribarView", item);
         startActivity(intent);
     }

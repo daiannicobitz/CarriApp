@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarriApp">
         <activity
-            android:name=".DescriptionActivity"
+            android:name=".VerCarribarActivity"
             android:exported="false" />
         <activity
             android:name=".ListaCarribaresActivity"
@@ -33,7 +33,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AgregarCarribarActivity" />
-        <activity android:name=".VerCarribarActivity" />
         <activity android:name=".MapasActivity" />
 
         <meta-data
