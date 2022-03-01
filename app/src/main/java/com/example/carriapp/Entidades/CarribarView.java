@@ -2,13 +2,21 @@ package com.example.carriapp.Entidades;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
+
 @Entity(tableName = CarribarView.TABLE_NAME)
-public class CarribarView {
+public class CarribarView implements Serializable {
 
     public static final String TABLE_NAME = "lista_carribares";
     public static final String COLUMN_ID = "id";
+
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(index = true, name = Carribar.COLUMN_ID)
+    private long idCarribar;
 
     @NonNull
     @ColumnInfo(name = "nombre")
@@ -23,9 +31,22 @@ public class CarribarView {
     private String horaCierre;
 
     public CarribarView( @NonNull String nombre, @NonNull String direccion, @NonNull String horaCierre) {
+        //this.idCarribar = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.horaCierre = horaCierre;
+    }
+
+    public CarribarView() {
+
+    }
+
+    public long getIdCarribar() {
+        return idCarribar;
+    }
+
+    public void setIdCarribar(long idCarribar) {
+        this.idCarribar = idCarribar;
     }
 
     public String getNombre() {
