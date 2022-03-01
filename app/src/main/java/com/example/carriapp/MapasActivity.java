@@ -77,7 +77,6 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
                 System.out.println("DISTANCIAAA" + distance);
 
 
-
             }
         });
 
