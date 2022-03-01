@@ -1,16 +1,10 @@
 package com.example.carriapp;
 
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.Manifest;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -27,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String CANAL01_MENSAJES_ID  = "10001";
+
     Button botonAgregar;
     Button botonVer;
     AppDataBase db;
@@ -44,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //REGISTRO LOS INTENT
         intFilt.addAction(MyReceiver1.EVENTO_01);
         this.registerReceiver(rec,intFilt);
-        this.createNotificationChannel();
+
         db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
@@ -67,33 +61,17 @@ public class MainActivity extends AppCompatActivity {
 //                Intent intent = new Intent (v.getContext(), VerCarribarActivity.class);
 //                startActivityForResult(intent, 0);
 
-            //Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
-            //startActivityForResult(intent, 0);
+//                  Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
+//                  startActivityForResult(intent, 0);
 
-                Intent i = new Intent();
-                i.putExtra (" data1", "A" );
-                i.putExtra (" data12", "B" );
-                i.setAction (MyReceiver1.EVENTO_01);
-               sendBroadcast(i);
+
             }
         });
 
 
     }
 
-    private void createNotificationChannel() {
 
-        System.out.println("Crea Canal");
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel1 =
-                    new NotificationChannel(CANAL01_MENSAJES_ID, "CANAL 1", NotificationManager.IMPORTANCE_DEFAULT);
-            channel1.setDescription("Descripcion 1");
-            NotificationManager notificationManager =
-                    getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel1);
-            }
-        }
 
     private void adquirirPermisos(){
         if(noTienePermiso()){

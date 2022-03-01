@@ -1,11 +1,14 @@
 package com.example.carriapp;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +35,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
     Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola;
     Button botonAgregar, botonTomarFoto, botonVolver;
     Bitmap bitmapImagen;
-
+    public static final String CANAL01_MENSAJES_ID  = "10001";
     ImageView imageView;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     AppDataBase db;
@@ -45,6 +48,8 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
+
+        this.createNotificationChannel();
 
         //convert string to double
         Double lat;
@@ -76,6 +81,13 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                         Carribar carriPrueba = new Carribar(textoNombre ,textoDireccion, strLat, strLon, textoHoraApertura,textoHoraCierre,
                                 textoContacto, hamburguesa, choripan, pizza, papasFritas, pancho, milanesa, bondiola, DataConverter.convertImageToByteArray(bitmapImagen));
                         db.carribarDao().insert(carriPrueba);
+
+                        Intent i = new Intent();
+                        i.putExtra (" data1", "A" );
+                        i.putExtra (" data12", "B" );
+                        i.setAction (MyReceiver1.EVENTO_01);
+                        sendBroadcast(i);
+
                     }else{
                         System.out.println("Datos mal formateados");
                     }
@@ -102,6 +114,20 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void createNotificationChannel() {
+
+        System.out.println("Crea Canal");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel1 =
+                    new NotificationChannel(CANAL01_MENSAJES_ID, "CANAL 1", NotificationManager.IMPORTANCE_DEFAULT);
+            channel1.setDescription("Descripcion 1");
+            NotificationManager notificationManager =
+                    getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel1);
+        }
     }
 
     public LatLng determineLatLngFromAddress(Context appContext, String strAddress) {
