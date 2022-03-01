@@ -8,15 +8,32 @@ import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.Manifest;
+import android.arch.persistence.room.Room;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.carriapp.Config.Constantes;
+import com.example.carriapp.DataBase.AppDataBase;
+import com.example.carriapp.Entidades.CarribarView;
+
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
+    public static final String CANAL01_MENSAJES_ID  = "10001";
     Button botonAgregar;
     Button botonVer;
-    public static final String CANAL01_MENSAJES_ID  = "10001";
-
+    AppDataBase db;
+    RecyclerView listaCarribar;
+    List<CarribarView> listaCarribares;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         intFilt.addAction(MyReceiver1.EVENTO_01);
         this.registerReceiver(rec,intFilt);
         this.createNotificationChannel();
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
+                .allowMainThreadQueries()
+                .build();
+
+        adquirirPermisos();
 
         botonAgregar = (Button) findViewById(R.id.buttonAgregar);
         botonAgregar.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 //                Intent intent = new Intent (v.getContext(), VerCarribarActivity.class);
 //                startActivityForResult(intent, 0);
+
+            //Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
+            //startActivityForResult(intent, 0);
+
                 Intent i = new Intent();
                 i.putExtra (" data1", "A" );
                 i.putExtra (" data12", "B" );
@@ -66,8 +92,22 @@ public class MainActivity extends AppCompatActivity {
             NotificationManager notificationManager =
                     getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel1);
+            }
+        }
 
+    private void adquirirPermisos(){
+        if(noTienePermiso()){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},9999);
         }
     }
+
+    private boolean noTienePermiso(){
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                        !=PackageManager.PERMISSION_GRANTED;
+    }
+
 
 }

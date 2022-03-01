@@ -5,9 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
+
 
 @Entity(tableName = Carribar.TABLE_NAME)
-public class Carribar {
+public class Carribar implements Serializable {
 
     public static final String TABLE_NAME = "lista_carribares";
     public static final String COLUMN_ID = "id";
@@ -24,6 +26,14 @@ public class Carribar {
     @NonNull
     @ColumnInfo(name = "direccion")
     private String direccion;
+
+    @NonNull
+    @ColumnInfo(name = "latitud")
+    private String latitud;
+
+    @NonNull
+    @ColumnInfo(name = "longitud")
+    private String longitud;
 
     @NonNull
     @ColumnInfo(name = "hora_apertura")
@@ -64,15 +74,22 @@ public class Carribar {
     @ColumnInfo(name = "bondiola")
     private Boolean hayBondiola;
 
+    @NonNull
+    @ColumnInfo(name = "imagen", typeAffinity = ColumnInfo.BLOB)
+    private byte [] imagen;
+
     public Carribar( @NonNull String nombre,
-                    @NonNull String direccion, @NonNull String horaApertura,
+                    @NonNull String direccion,  @NonNull String latitud,
+                     @NonNull String longitud,  @NonNull String horaApertura,
                     @NonNull String horaCierre, @NonNull String contacto,
                     @NonNull Boolean hayHamburguesa, @NonNull Boolean hayChoripan,
                     @NonNull Boolean hayPizza, @NonNull Boolean hayPapasFritas,
                     @NonNull Boolean hayPancho, @NonNull Boolean hayMilanesa,
-                    @NonNull Boolean hayBondiola) {
+                    @NonNull Boolean hayBondiola , @NonNull byte[] imagen) {
         this.nombre = nombre;
         this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
         this.contacto = contacto;
@@ -83,6 +100,7 @@ public class Carribar {
         this.hayPancho = hayPancho;
         this.hayMilanesa = hayMilanesa;
         this.hayBondiola = hayBondiola;
+        this.imagen = imagen;
     }
 
     public long getIdCarribar() {
@@ -108,6 +126,15 @@ public class Carribar {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+
+    public String getLatitud() { return latitud; }
+
+    public void setLatitud( String latitud) { this.latitud = latitud; }
+
+    public String getLongitud() { return longitud;  }
+
+    public void setLongitud( String longitud) { this.longitud = longitud; }
 
     public String getHoraApertura() {
         return horaApertura;
@@ -188,4 +215,8 @@ public class Carribar {
     public void setHayBondiola(Boolean hayBondiola) {
         this.hayBondiola = hayBondiola;
     }
+
+    public byte[] getImagen() { return imagen;   }
+
+    public void setImagen(byte[] imagen) { this.imagen = imagen; }
 }

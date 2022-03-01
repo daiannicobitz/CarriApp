@@ -6,6 +6,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.example.carriapp.Entidades.Carribar;
+import com.example.carriapp.Entidades.CarribarView;
 
 import java.util.List;
 
@@ -17,10 +18,17 @@ public interface CarribarDAO {
     @Query("SELECT COUNT(*) FROM " + Carribar.TABLE_NAME)
     int count(); //metodo
 
-    //seleccionar todo
+    //seleccionar all
     @Query("SELECT * FROM "+Carribar.TABLE_NAME)
     List<Carribar> getAllCarribares();
 
+    //seleccionar all
+    @Query("SELECT * FROM "+ CarribarView.TABLE_NAME)
+    List<CarribarView> getAllCarribaresView();
+
+    //buscar carribar por id
+    @Query("SELECT * FROM "+ CarribarView.TABLE_NAME + " WHERE " + Carribar.COLUMN_ID + " = :id")
+    Carribar getCarribarById(long id);
 
     //insertar
     @Insert

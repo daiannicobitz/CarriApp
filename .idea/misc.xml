@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_agregar_carribar.xml" value="0.14175724637681159" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_lista_carribares.xml" value="0.1078125" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_mapas.xml" value="0.1" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_ver_carribar.xml" value="0.4" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/list_element.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/drawable/ic_carriimagen.xml" value="0.2203125" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_agregar_carribar.xml" value="0.18958333333333333" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_descriptionn.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_recyclerview.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_ver_carribar.xml" value="0.2" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/list_element.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
