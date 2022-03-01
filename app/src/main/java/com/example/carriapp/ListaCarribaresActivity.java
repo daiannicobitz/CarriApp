@@ -29,12 +29,12 @@ public class ListaCarribaresActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-
         listaCarribar = findViewById(R.id.listRecyclerView);
         listaCarribar.setLayoutManager(new LinearLayoutManager(this));
 
         listaCarribares = new ArrayList<>();
         listaCarribares = db.carribarDao().getAllCarribaresView();
+
 
         ListAdapter listaCarribaresAdapter = new ListAdapter(listaCarribares, this, new ListAdapter.OnItemClickListener() {
             @Override
@@ -43,6 +43,8 @@ public class ListaCarribaresActivity extends AppCompatActivity {
             }
         });
         listaCarribar.setAdapter(listaCarribaresAdapter);
+
+        db.close();
     }
 
     public void moveToDescription(CarribarView item){
@@ -50,4 +52,5 @@ public class ListaCarribaresActivity extends AppCompatActivity {
         intent.putExtra("CarribarView", item);
         startActivity(intent);
     }
+
 }

@@ -1,14 +1,21 @@
 package com.example.carriapp;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
 import com.example.carriapp.Entidades.CarribarView;
+
+import java.time.LocalTime;
 
 public class DescriptionActivity extends AppCompatActivity {
 
@@ -38,6 +45,22 @@ public class DescriptionActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
+        inicializarComponentes();
+
+        Button botonLlevame = (Button) findViewById(R.id.buttonLlevame);
+        botonLlevame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), MapasActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void inicializarComponentes(){
 
         CarribarView carribar = (CarribarView) getIntent().getSerializableExtra("CarribarView");
         Carribar item = db.carribarDao().getCarribarById(carribar.getIdCarribar());
@@ -61,17 +84,79 @@ public class DescriptionActivity extends AppCompatActivity {
         nombreTextView.setText(item.getNombre());
         direccionTextView.setText(item.getDireccion());
         //distanciaTextView.setText(item.getDistancia);
+
         //abiertoTextView.setText(item.getNombre());
         //cerradoTextView.setText(item.getNombre());
-        horaCierreTextView.setText(item.getHoraCierre());
-        horaAperturaTextView.setText(item.getHoraApertura());
+        if(calcularAperturaCierre(item.getHoraCierre(), item.getHoraApertura())==1){
+            abiertoTextView.setVisibility(View.VISIBLE);
+            cerradoTextView.setVisibility(View.GONE);
+            horaCierreTextView.setText("Hora Cierre:" + item.getHoraCierre());
+            horaAperturaTextView.setVisibility(View.GONE);
+            horaCierreTextView.setVisibility(View.VISIBLE);
+        }else{
+            abiertoTextView.setVisibility(View.GONE);
+            cerradoTextView.setVisibility(View.VISIBLE);
+            horaCierreTextView.setVisibility(View.GONE);
+            horaAperturaTextView.setText("Hora apertura: " + item.getHoraApertura());
+            horaAperturaTextView.setVisibility(View.VISIBLE);
+        }
+
         contactoTextView.setText(item.getContacto());
-        //hamburguesasTextView.setText(item.getHayHamburguesa());
-        //panchosTextView.setText(item.getNombre());
-        //choripanesTextView.setText(item.getNombre());
-        //milanesaTextView.setText(item.getNombre());
-        //pizzaTextView.setText(item.getNombre());
-        //bondiolaTextView.setText(item.getNombre());
-        //papasFritasTextView.setText(item.getNombre());
+
+        if(!item.getHayHamburguesa())
+            hamburguesasTextView.setVisibility(View.GONE);
+
+        if(!item.getHayBondiola())
+            bondiolaTextView.setVisibility(View.GONE);
+
+        if(!item.getHayChoripan())
+            choripanesTextView.setVisibility(View.GONE);
+
+        if(!item.getHayMilanesa())
+            milanesaTextView.setVisibility(View.GONE);
+
+        if(!item.getHayPancho())
+            panchosTextView.setVisibility(View.GONE);
+
+        if(!item.getHayPapasFritas())
+            papasFritasTextView.setVisibility(View.GONE);
+
+        if(!item.getHayPizza())
+            pizzaTextView.setVisibility(View.GONE);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public int calcularAperturaCierre(String horarioCierre, String horarioApertura){
+
+        //Devuelve 0 si esta cerrado, 1 si esta abierto
+
+        int horaCierre = Integer.parseInt(horarioCierre.substring(0,2));
+        int minutoCierre = Integer.parseInt(horarioCierre.substring(3));
+        int horaApertura = Integer.parseInt(horarioApertura.substring(0,2));
+        int minutoApertura = Integer.parseInt(horarioApertura.substring(3));
+        LocalTime time = LocalTime.now();
+        int horaActual = time.getHour();
+        int minutoActual = time.getMinute();
+
+        if(horaCierre == 0) horaCierre +=24;
+        if(horaActual == 0) horaActual +=24;
+
+        System.out.println("hora consultada"+horaCierre);
+        System.out.println("hora actual"+horaActual);
+        System.out.println("minuto consultado"+minutoCierre);
+
+        if(horaCierre>horaActual && horaApertura <= horaActual) {
+            if(horaApertura==horaActual)
+                if(minutoApertura>minutoActual) return 0;
+            return 1;
+        }
+        else if(horaCierre<horaActual || horaApertura>horaActual) return 0;
+        else if(horaCierre==horaActual)
+            if(minutoCierre>minutoActual) return 1;
+            else if(minutoCierre<minutoActual)return 0;
+            else if(minutoCierre==minutoActual) return 0;
+
+        return 9;
     }
 }
