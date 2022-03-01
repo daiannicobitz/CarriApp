@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         botonVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (v.getContext(), VerCarribarActivity.class);
+                Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
                 startActivityForResult(intent, 0);
             }
         });
