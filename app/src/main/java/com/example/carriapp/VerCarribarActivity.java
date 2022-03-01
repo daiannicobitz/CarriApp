@@ -35,6 +35,8 @@ public class VerCarribarActivity extends AppCompatActivity {
     FusedLocationProviderClient fusedLocationClient;
     Double latitudUbicacionActual;
     Double longitudUbicacionActual;
+    Float distancia;
+    Location locationActual;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -43,16 +45,13 @@ public class VerCarribarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ver_carribar);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
-
-
         TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
 
         db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "Constantes.BD_NAME")
                 .allowMainThreadQueries()
                 .build();
 
-        getLocation();
+
         inicializarComponentes();
         botonLlevame = (Button) findViewById(R.id.buttonLlevame);
         botonLlevame.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +84,6 @@ public class VerCarribarActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.textViewDireccion)).setText(carribarAMostrar.getDireccion());
 
 
-        ((TextView) findViewById(R.id.textViewDistancia)).setText(obtenerDistancia(carribarAMostrar.getLatitud(), carribarAMostrar.getLongitud()));
-
         TextView horaCarribarAbierto = (TextView) findViewById(R.id.textViewHoraApertura);
         TextView horaCarribarCerrado = (TextView) findViewById(R.id.textViewHoraCierre);
         TextView carribarAbierto = (TextView) findViewById(R.id.textViewAbierto);
@@ -104,20 +101,17 @@ public class VerCarribarActivity extends AppCompatActivity {
         LocalTime horaActual = LocalTime.parse(df.format(date)); //1 si horaApertura > horaCierre
 
         if(horaActual.compareTo(horaApertura) == 1 && horaCierre.compareTo(horaActual) == 1){
-            System.out.println("ABIERTOOO");
             carribarAbierto.setVisibility(View.VISIBLE);
             carribarCerrado.setVisibility(View.GONE);
             horaCarribarAbierto.setVisibility(View.GONE);
             horaCarribarCerrado.setVisibility(View.VISIBLE);
         }else{
-            System.out.println("CERRADO");
+
             carribarAbierto.setVisibility(View.GONE);
             carribarCerrado.setVisibility(View.VISIBLE);
             horaCarribarAbierto.setVisibility(View.VISIBLE);
             horaCarribarCerrado.setVisibility(View.GONE);
         }
-
-        System.out.println(horaApertura.compareTo(horaCierre));
 
         ((TextView) findViewById(R.id.textViewContacto)).setText(carribarAMostrar.getContacto());
 
@@ -141,15 +135,15 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         if(!carribarAMostrar.getHayPizza())
             ((TextView) findViewById(R.id.textViewPizza)).setVisibility(View.GONE);
+
+        obtenerDistancia(carribarAMostrar.getLatitud(), carribarAMostrar.getLongitud());
+
     }
 
-    public String obtenerDistancia(String latitudCarri, String longitudCarri){
+    public void obtenerDistancia(String latitudCarri, String longitudCarri){
 
         Double lat;
         Double lon;
-
-        System.out.println("QQQQQ" + latitudUbicacionActual);
-        System.out.println(longitudUbicacionActual);
 
         lat = Double.parseDouble(latitudCarri);
         lon = Double.parseDouble(longitudCarri);
@@ -158,17 +152,15 @@ public class VerCarribarActivity extends AppCompatActivity {
         locationCarri.setLatitude(lat);  //latitud
         locationCarri.setLongitude(lon); //longitud
 
+        getLocation(locationCarri);
+
 //        Location locationActual = new Location("Localizacion actual");
 //        locationActual.setLatitude(latActual);  //latitud
 //        locationActual.setLongitude(lonActual); //longitud
-//
-//        double distance = locationCarri.distanceTo(locationActual);
-//
-//        String str = Double.toString(distance);
-        return  "str" ;
+
     }
 
-    private void getLocation(){
+    private void getLocation(Location l){
         @SuppressLint("MissingPermission")
         Task<Location> locationTask = fusedLocationClient.getLastLocation();
 
@@ -178,8 +170,15 @@ public class VerCarribarActivity extends AppCompatActivity {
                 if(location!=null){
                     latitudUbicacionActual = location.getLatitude();
                     longitudUbicacionActual = location.getLongitude();
-                    System.out.println("QQQQQ" + latitudUbicacionActual);
-                    System.out.println(longitudUbicacionActual);
+
+                    locationActual = new Location("Localizacion actual");
+                    locationActual.setLatitude(latitudUbicacionActual);  //latitud
+                    locationActual.setLongitude(longitudUbicacionActual);
+
+                    distancia = l.distanceTo(locationActual);
+
+                    ((TextView) findViewById(R.id.textViewDistancia)).setText("Distancia a carribar: " + Float.toString(distancia) + " metros");
+
                 }
             }
         });
