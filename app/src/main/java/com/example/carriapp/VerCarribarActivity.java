@@ -125,7 +125,8 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         nombreTextView.setText(item.getNombre());
         direccionTextView.setText(item.getDireccion());
-        //distanciaTextView.setText(item.getDistancia);
+
+        obtenerDistancia(item.getLatitud(), item.getLongitud());
 
         if(calcularAperturaCierre(item.getHoraCierre(), item.getHoraApertura())){
             abiertoTextView.setVisibility(View.VISIBLE);
@@ -164,8 +165,6 @@ public class VerCarribarActivity extends AppCompatActivity {
         if(!item.getHayPizza())
             pizzaTextView.setVisibility(View.GONE);
 
-            obtenerDistancia(item.getLatitud(), item.getLongitud());
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -197,9 +196,6 @@ public class VerCarribarActivity extends AppCompatActivity {
 
         getLocation(locationCarri);
 
-//        Location locationActual = new Location("Localizacion actual");
-//        locationActual.setLatitude(latActual);  //latitud
-//        locationActual.setLongitude(lonActual); //longitud
 
     }
 
