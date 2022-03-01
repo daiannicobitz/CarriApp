@@ -26,6 +26,14 @@ public class Carribar {
     private String direccion;
 
     @NonNull
+    @ColumnInfo(name = "latitud")
+    private String latitud;
+
+    @NonNull
+    @ColumnInfo(name = "longitud")
+    private String longitud;
+
+    @NonNull
     @ColumnInfo(name = "hora_apertura")
     private String horaApertura;
 
@@ -69,7 +77,8 @@ public class Carribar {
     private byte [] imagen;
 
     public Carribar( @NonNull String nombre,
-                    @NonNull String direccion, @NonNull String horaApertura,
+                    @NonNull String direccion,  @NonNull String latitud,
+                     @NonNull String longitud,  @NonNull String horaApertura,
                     @NonNull String horaCierre, @NonNull String contacto,
                     @NonNull Boolean hayHamburguesa, @NonNull Boolean hayChoripan,
                     @NonNull Boolean hayPizza, @NonNull Boolean hayPapasFritas,
@@ -77,6 +86,8 @@ public class Carribar {
                     @NonNull Boolean hayBondiola , @NonNull byte[] imagen) {
         this.nombre = nombre;
         this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.horaApertura = horaApertura;
         this.horaCierre = horaCierre;
         this.contacto = contacto;
@@ -113,6 +124,15 @@ public class Carribar {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+
+
+    public String getLatitud() { return latitud; }
+
+    public void setLatitud( String latitud) { this.latitud = latitud; }
+
+    public String getLongitud() { return longitud;  }
+
+    public void setLongitud( String longitud) { this.longitud = longitud; }
 
     public String getHoraApertura() {
         return horaApertura;

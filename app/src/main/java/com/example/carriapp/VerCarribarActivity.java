@@ -1,7 +1,9 @@
 package com.example.carriapp;
 
+import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.graphics.Bitmap;
@@ -14,11 +16,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
 import com.example.carriapp.Entidades.CarribarView;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -48,6 +53,11 @@ public class VerCarribarActivity extends AppCompatActivity {
     TextView papasFritasTextView;
     ImageView carriImagenView;
     Bitmap imagenBitmap;
+    FusedLocationProviderClient fusedLocationClient;
+    Double latitudUbicacionActual;
+    Double longitudUbicacionActual;
+    Float distancia;
+    Location locationActual;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -55,9 +65,13 @@ public class VerCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
+
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "Constantes.BD_NAME")
                 .allowMainThreadQueries()
                 .build();
+
 
         inicializarComponentes();
         botonLlevame = (Button) findViewById(R.id.buttonLlevame);
@@ -147,38 +161,12 @@ public class VerCarribarActivity extends AppCompatActivity {
         if(!item.getHayPizza())
             pizzaTextView.setVisibility(View.GONE);
 
+            obtenerDistancia(carribarAMostrar.getLatitud(), carribarAMostrar.getLongitud());
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public boolean calcularAperturaCierre(String horarioCierre, String horarioApertura){
-
-        //Devuelve 0 si esta cerrado, 1 si esta abierto
-
-//        int horaCierre = Integer.parseInt(horarioCierre.substring(0,2));
-//        int minutoCierre = Integer.parseInt(horarioCierre.substring(3));
-//        int horaApertura = Integer.parseInt(horarioApertura.substring(0,2));
-//        int minutoApertura = Integer.parseInt(horarioApertura.substring(3));
-//        LocalTime time = LocalTime.now();
-//        int horaActual = time.getHour();
-//        int minutoActual = time.getMinute();
-//
-//        if(horaCierre == 0) horaCierre +=24;
-//        if(horaActual == 0) horaActual +=24;
-//
-//        System.out.println("hora consultada"+horaCierre);
-//        System.out.println("hora actual"+horaActual);
-//        System.out.println("minuto consultado"+minutoCierre);
-//
-//        if(horaCierre>horaActual && horaApertura <= horaActual) {
-//            if(horaApertura==horaActual)
-//                if(minutoApertura>minutoActual) return 0;
-//            return 1;
-//        }
-//        else if(horaCierre<horaActual || horaApertura>horaActual) return 0;
-//        else if(horaCierre==horaActual)
-//            if(minutoCierre>minutoActual) return 1;
-//            else if(minutoCierre<minutoActual)return 0;
-//            else if(minutoCierre==minutoActual) return 0;
 
         Date date = new Date();
         DateFormat df = new SimpleDateFormat("HH:mm");
@@ -189,5 +177,50 @@ public class VerCarribarActivity extends AppCompatActivity {
         LocalTime horaActual = LocalTime.parse(df.format(date)); //1 si horaApertura > horaCierre
 
         return horaActual.compareTo(horaApertura) == 1 && horaCierre.compareTo(horaActual) == 1;
+
+    }
+
+    public void obtenerDistancia(String latitudCarri, String longitudCarri){
+
+        Double lat;
+        Double lon;
+
+        lat = Double.parseDouble(latitudCarri);
+        lon = Double.parseDouble(longitudCarri);
+
+        Location locationCarri = new Location("Carribar");
+        locationCarri.setLatitude(lat);  //latitud
+        locationCarri.setLongitude(lon); //longitud
+
+        getLocation(locationCarri);
+
+//        Location locationActual = new Location("Localizacion actual");
+//        locationActual.setLatitude(latActual);  //latitud
+//        locationActual.setLongitude(lonActual); //longitud
+
+    }
+
+    private void getLocation(Location l){
+        @SuppressLint("MissingPermission")
+        Task<Location> locationTask = fusedLocationClient.getLastLocation();
+
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location!=null){
+                    latitudUbicacionActual = location.getLatitude();
+                    longitudUbicacionActual = location.getLongitude();
+
+                    locationActual = new Location("Localizacion actual");
+                    locationActual.setLatitude(latitudUbicacionActual);  //latitud
+                    locationActual.setLongitude(longitudUbicacionActual);
+
+                    distancia = l.distanceTo(locationActual);
+
+                    ((TextView) findViewById(R.id.textViewDistancia)).setText("Distancia a carribar: " + Float.toString(distancia) + " metros");
+
+                }
+            }
+        });
     }
 }

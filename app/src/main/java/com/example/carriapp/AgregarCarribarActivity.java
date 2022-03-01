@@ -1,8 +1,11 @@
 package com.example.carriapp;
 
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -12,11 +15,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
+import com.google.android.gms.maps.model.LatLng;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,9 +41,16 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
+        db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "Constantes.BD_NAME")
                 .allowMainThreadQueries()
                 .build();
+
+        //convert string to double
+        Double lat;
+        String lat_str = "17.456174";
+        lat = Double.parseDouble(lat_str);
+        System.out.println(lat);
+
 
         imageView = (ImageView) findViewById(R.id.imageViewFotoTomada);
         bitmapImagen = null;
@@ -53,7 +65,14 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                     if(validarFormato()){
                         System.out.println("Datos bien formateados");
 
-                        Carribar carriPrueba = new Carribar(textoNombre ,textoDireccion,textoHoraApertura,textoHoraCierre,
+                       LatLng latLng =  determineLatLngFromAddress(AgregarCarribarActivity.this, textoDireccion + " , Santa Fe" );
+                        double dLat = latLng.latitude;
+                        double dLon = latLng.longitude;
+                        String strLat = Double.toString(dLat);
+                        String strLon = Double.toString(dLon);
+
+
+                        Carribar carriPrueba = new Carribar(textoNombre ,textoDireccion, strLat, strLon, textoHoraApertura,textoHoraCierre,
                                 textoContacto, hamburguesa, choripan, pizza, papasFritas, pancho, milanesa, bondiola, DataConverter.convertImageToByteArray(bitmapImagen));
                         db.carribarDao().insert(carriPrueba);
                     }else{
@@ -82,6 +101,27 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public LatLng determineLatLngFromAddress(Context appContext, String strAddress) {
+        LatLng latLng = null;
+        Geocoder geocoder = new Geocoder(appContext, Locale.getDefault());
+        List<Address> geoResults = null;
+
+        try {
+            geoResults = geocoder.getFromLocationName(strAddress, 1);
+            while (geoResults.size()==0) {
+                geoResults = geocoder.getFromLocationName(strAddress, 1);
+            }
+            if (geoResults.size()>0) {
+                Address addr = geoResults.get(0);
+                latLng = new LatLng(addr.getLatitude(),addr.getLongitude());
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+
+        return latLng; //LatLng value of address
     }
 
     @Override
