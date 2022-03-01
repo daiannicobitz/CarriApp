@@ -194,32 +194,6 @@
         android:minLines="2"
         android:maxLines="4"/>
 
-    <TextView
-        android:id="@+id/textViewDuracion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Por cuanto quieres que se vea el carri"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:background="@color/agua"/>
-
-    <RadioGroup
-        android:id="@+id/radioGrupo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <RadioButton
-            android:id="@+id/radioButtonUnaSemana"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Por una semana" />
-
-        <RadioButton
-            android:id="@+id/radioButtonUnMes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Hasta fin de mes" />
-    </RadioGroup>
 
     <Button
         android:id="@+id/buttonTomarFoto"

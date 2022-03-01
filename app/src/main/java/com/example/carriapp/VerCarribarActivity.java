@@ -19,6 +19,7 @@ import java.util.List;
 public class VerCarribarActivity extends AppCompatActivity {
 
     AppDataBase db;
+    Button botonLlevame, botonVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,19 @@ public class VerCarribarActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
         inicializarComponentes();
-        Button botonLlevame = (Button) findViewById(R.id.buttonLlevame);
+        botonLlevame = (Button) findViewById(R.id.buttonLlevame);
         botonLlevame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (v.getContext(), MapasActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+        botonVolver = (Button) findViewById(R.id.buttonVolver);
+        botonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), ListaCarribaresActivity.class);
                 startActivityForResult(intent, 0);
             }
         });

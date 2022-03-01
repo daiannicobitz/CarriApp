@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
@@ -25,9 +23,8 @@ import java.util.regex.Pattern;
 public class AgregarCarribarActivity extends AppCompatActivity {
 
     String textoNombre,textoDireccion,textoHoraApertura,textoHoraCierre,textoContacto;
-    Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola,btnDia,btnSemana,btnMes;
-    Button botonAgregar, botonTomarFoto;
-    RadioGroup grupoBotones;
+    Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola;
+    Button botonAgregar, botonTomarFoto, botonVolver;
     Bitmap bitmapImagen;
 
     ImageView imageView;
@@ -77,6 +74,14 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             }
         });
 
+        this.botonVolver = (Button) findViewById(R.id.buttonCancelar);
+        botonVolver.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent (v.getContext(), MainActivity.class);
+                startActivityForResult(intent, 0);
+            }
+        });
+
     }
 
     @Override
@@ -106,11 +111,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         this.milanesa = ((CheckBox) findViewById(R.id.checkBoxHayMilanesa)).isChecked();
         this.bondiola = ((CheckBox) findViewById(R.id.checkBoxHayBondiola)).isChecked();
 
-        this.btnDia = ((RadioButton) findViewById(R.id.radioButtonUnDia)).isChecked();
-        this.btnSemana = ((RadioButton) findViewById(R.id.radioButtonUnaSemana)).isChecked();
-        this.btnMes = ((RadioButton) findViewById(R.id.radioButtonUnMes)).isChecked();
 
-        this.grupoBotones = ((RadioGroup)findViewById(R.id.radioGrupo));
     }
 
     public boolean validarDatosVacios(){
@@ -122,6 +123,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                 this.bitmapImagen == null){
             return true;
         }
+
         if(     this.hamburguesa == false &&
                 this.choripan == false &&
                 this.papasFritas == false &&
@@ -132,9 +134,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             return true;
         }
 
-        if(grupoBotones.getCheckedRadioButtonId() == -1){
-            return true;
-        }
+
         return false;
     }
 
