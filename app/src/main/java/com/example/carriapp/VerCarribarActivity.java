@@ -3,19 +3,18 @@ package com.example.carriapp;
 import android.annotation.SuppressLint;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.graphics.Bitmap;
-import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
 import com.example.carriapp.DataBase.AppDataBase;
 import com.example.carriapp.Entidades.Carribar;
@@ -29,7 +28,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 public class VerCarribarActivity extends AppCompatActivity {
@@ -58,6 +56,7 @@ public class VerCarribarActivity extends AppCompatActivity {
     Double longitudUbicacionActual;
     Float distancia;
     Location locationActual;
+    Location locationCarri;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -68,7 +67,7 @@ public class VerCarribarActivity extends AppCompatActivity {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
 
-        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, "Constantes.BD_NAME")
+        db = Room.databaseBuilder(getApplicationContext(),AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
                 .build();
 
@@ -79,7 +78,11 @@ public class VerCarribarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent (v.getContext(), MapasActivity.class);
-                startActivityForResult(intent, 0);
+                intent.putExtra("LatitudCarri", locationCarri.getLatitude());
+                intent.putExtra("LongitudCarri", locationCarri.getLongitude());
+//                intent.putExtra("LatitudActual", locationActual.getLatitude());
+//                intent.putExtra("LongitudActual", locationActual.getLongitude());
+                startActivity(intent);
             }
         });
         botonVolver = (Button) findViewById(R.id.buttonVolver);
@@ -161,7 +164,7 @@ public class VerCarribarActivity extends AppCompatActivity {
         if(!item.getHayPizza())
             pizzaTextView.setVisibility(View.GONE);
 
-            obtenerDistancia(carribarAMostrar.getLatitud(), carribarAMostrar.getLongitud());
+            obtenerDistancia(item.getLatitud(), item.getLongitud());
 
     }
 
@@ -188,7 +191,7 @@ public class VerCarribarActivity extends AppCompatActivity {
         lat = Double.parseDouble(latitudCarri);
         lon = Double.parseDouble(longitudCarri);
 
-        Location locationCarri = new Location("Carribar");
+        locationCarri = new Location("Carribar");
         locationCarri.setLatitude(lat);  //latitud
         locationCarri.setLongitude(lon); //longitud
 

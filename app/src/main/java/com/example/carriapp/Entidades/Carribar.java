@@ -5,9 +5,11 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.io.Serializable;
+
 
 @Entity(tableName = Carribar.TABLE_NAME)
-public class Carribar {
+public class Carribar implements Serializable {
 
     public static final String TABLE_NAME = "lista_carribares";
     public static final String COLUMN_ID = "id";

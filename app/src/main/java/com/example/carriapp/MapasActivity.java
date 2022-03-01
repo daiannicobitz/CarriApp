@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -26,8 +25,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.List;
 import java.util.Locale;
@@ -39,6 +36,8 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
     private Polyline currentPolyline;
     Button getDirection;
     private FusedLocationProviderClient fusedLocationClient;
+    Double latitudUbicacionActual;
+    Double longitudUbicacionActual;
 
     @SuppressLint("MissingPermission")
     @Override
@@ -47,23 +46,17 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
         setContentView(R.layout.activity_mapas);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-
         getDirection = findViewById(R.id.btnGetDirection);
 
-        Location inicio = new Location("localizacion 1");
-        inicio.setLatitude(-31.732970);  //latitud
-        inicio.setLongitude(-60.535388); //longitud
-        Location fin = new Location("localizacion 2");
-        fin.setLatitude(-31.729053);  //latitud
-        fin.setLongitude(-60.530357); //longitud
-        double distance = inicio.distanceTo(fin);
+        Double valor1 = (Double) getIntent().getSerializableExtra("LatitudCarri");
+        Double valor2 = (Double) getIntent().getSerializableExtra("LongitudCarri");
 
-        markinicio = new MarkerOptions().position(new LatLng(-31.732970, -60.535388)).title("Libertad 226");
-        markfin = new MarkerOptions().position(new LatLng(-31.729053, -60.530357)).title("Location 2");
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.choripan));
+        markinicio = new MarkerOptions().position(new LatLng(valor1, valor2)).title("Carribar");
+        markfin = new MarkerOptions().position(new LatLng(-31.617436, -60.675379)).title("Ubicacion Actual");
+        //.icon(BitmapDescriptorFactory.fromResource(R.drawable.choripan));
 
         SupportMapFragment mapFragment;
-        mapFragment =  (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapa);
         mapFragment.getMapAsync(this);
 
         getDirection.setOnClickListener(new View.OnClickListener() {
@@ -73,27 +66,9 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
                 actualizarMapa();
                 new FetchURL(MapasActivity.this).execute(getUrl(markinicio.getPosition(), markfin.getPosition(), "driving"), "driving");
 //                new GetCoordinates().execute("1600 Amphitheatre Parkway, Mountain View, CA");
-                System.out.println(" AAAAAAAAA" + determineLatLngFromAddress(MapasActivity.this, "Libertad 226 , Parana" ));
-                System.out.println("DISTANCIAAA" + distance);
-
-
             }
         });
 
-    }
-
-    private void getLocation(){
-        @SuppressLint("MissingPermission")
-        Task<Location> locationTask = fusedLocationClient.getLastLocation();
-
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if(location!=null){
-                    System.out.println( location.toString() + "  " + location.getLatitude());
-                }
-            }
-        });
     }
 
     @Override
@@ -167,7 +142,6 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION},9999);
         } else {
             ejecutarActualizacionMapa();
-            getLocation();
         }
     }
 
