@@ -26,6 +26,9 @@ public interface CarribarDAO {
     @Query("SELECT * FROM "+ CarribarView.TABLE_NAME)
     List<CarribarView> getAllCarribaresView();
 
+    //buscar carribar por id
+    @Query("SELECT * FROM "+ CarribarView.TABLE_NAME + " WHERE " + Carribar.COLUMN_ID + " = :id")
+    Carribar getCarribarById(long id);
 
     //insertar
     @Insert

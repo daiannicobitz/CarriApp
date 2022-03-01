@@ -1,6 +1,7 @@
 package com.example.carriapp;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,15 +29,28 @@ public class ListaCarribaresActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build();
 
-
         listaCarribar = findViewById(R.id.listRecyclerView);
         listaCarribar.setLayoutManager(new LinearLayoutManager(this));
 
         listaCarribares = new ArrayList<>();
         listaCarribares = db.carribarDao().getAllCarribaresView();
-        System.out.println(listaCarribares.get(0).toString());
 
-        ListAdapter listaCarribaresAdapter = new ListAdapter(listaCarribares, this);
+
+        ListAdapter listaCarribaresAdapter = new ListAdapter(listaCarribares, this, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(CarribarView item) {
+                moveToDescription(item);
+            }
+        });
         listaCarribar.setAdapter(listaCarribaresAdapter);
+
+        db.close();
     }
+
+    public void moveToDescription(CarribarView item){
+        Intent intent = new Intent(this, VerCarribarActivity.class);
+        intent.putExtra("CarribarView", item);
+        startActivity(intent);
+    }
+
 }
