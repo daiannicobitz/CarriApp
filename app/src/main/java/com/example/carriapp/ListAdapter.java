@@ -1,6 +1,8 @@
 package com.example.carriapp;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.carriapp.Entidades.CarribarView;
@@ -59,6 +62,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imagen;
         TextView nombre, direccion, horaCierre, horaApertura;
+        RelativeLayout relativeLayoutListElement;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -67,6 +71,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             direccion = itemView.findViewById(R.id.textViewDireccion);
             horaCierre = itemView.findViewById(R.id.textViewCierre);
             horaApertura = itemView.findViewById(R.id.textViewAbierto);
+            relativeLayoutListElement = itemView.findViewById(R.id.relativeLayoutCardView);
+
         }
 
         @RequiresApi(api = Build.VERSION_CODES.O)
@@ -77,9 +83,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             if( calcularAperturaCierre(item.getHoraCierre(), item.getHoraApertura())){
                 horaCierre.setVisibility(View.VISIBLE);
                 horaApertura.setVisibility(View.GONE);
+                relativeLayoutListElement.setBackgroundResource(R.color.verde);
             }else{
                 horaCierre.setVisibility(View.GONE);
                 horaApertura.setVisibility(View.VISIBLE);
+                relativeLayoutListElement.setBackgroundResource(R.color.rojo);
             }
 
 

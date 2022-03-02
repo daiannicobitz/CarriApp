@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    android:background="@color/agua"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
@@ -14,14 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/clarito">
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:padding="6dp"
+            android:background="@color/rojo">
 
             <ImageView
                 android:id="@+id/imgElementoRecycler"
@@ -51,8 +55,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="Nombre"
-                    android:textColor="@android:color/black"
+                    android:text="@string/nombre"
+                    android:textColor="@color/clarito"
                     android:textSize="24dp"
                     android:textStyle="bold"/>
 
@@ -60,14 +64,16 @@
                     android:id="@+id/textViewDireccion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Direccion"
+                    android:text="@string/direccion"
+                    android:textColor="@color/clarito"
                     android:textSize="18dp"/>
 
                 <TextView
                     android:id="@+id/textViewCierre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Horario de cierre"
+                    android:text="@string/horario_de_cierre"
+                    android:textColor="@color/clarito"
                     android:visibility="visible"
                     android:textSize="18dp"/>
 
@@ -75,7 +81,8 @@
                     android:id="@+id/textViewAbierto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Horario de cierre"
+                    android:text="@string/horario_de_apertura"
+                    android:textColor="@color/clarito"
                     android:visibility="gone"
                     android:textSize="18dp"/>
 

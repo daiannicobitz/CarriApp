@@ -8,4 +8,24 @@
     <string name="salir">Salir</string>
     <string name="menu_principal">Menu principal</string>
     <string name="lista_carribares">Lista carribares</string>
+    <string name="nombre">Nombre</string>
+    <string name="direccion">Direccion</string>
+    <string name="horario_de_cierre">Horario de cierre</string>
+    <string name="horario_de_apertura">Horario de apertura</string>
+    <string name="volver">Volver</string>
+    <string name="llevame">Llevame!</string>
+    <string name="papas_fritas">PAPAS FRITAS</string>
+    <string name="bondiola">BONDIOLA</string>
+    <string name="pizza">PIZZA</string>
+    <string name="milanesa">MILANESA</string>
+    <string name="choripan">CHORIPAN</string>
+    <string name="panchos">PANCHOS</string>
+    <string name="hamburguesas">HAMBURGUESAS</string>
+    <string name="comidas_disponibles">Comidas Disponibles</string>
+    <string name="contacto">CONTACTO</string>
+    <string name="hora_apertura">HORA APERTURA</string>
+    <string name="hora_cierre">HORA CIERRE</string>
+    <string name="cerrado">Cerrado</string>
+    <string name="abierto">Abierto</string>
+    <string name="distancia_en_metros">DISTANCIA EN METROS</string>
 </resources>

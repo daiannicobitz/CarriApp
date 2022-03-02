@@ -21,19 +21,33 @@
             <include
                 layout="@layout/activity_toolbar"/>
 
-            <ImageView
-                android:id="@+id/imagenCarribar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="86dp">
-            </ImageView>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/agua">
 
-            <TextView
-                android:id="@+id/textViewNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="40dp"
-                android:text="NOMBRE" />
+                <ImageView
+                    android:id="@+id/imagenCarribar"
+                    android:layout_width="70dp"
+                    android:layout_height="100dp"
+                    android:foregroundGravity="center">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/textViewNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="30dp"
+                    android:layout_marginVertical="20dp"
+                    android:textSize="40dp"
+                    android:textColor="@color/azul_oscuro"
+                    android:text="@string/nombre"
+                    android:fontFamily="serif"/>
+
+            </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/textViewDireccion"
@@ -41,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:text="DIRECCION" />
+                android:text="@string/direccion"
+                android:fontFamily="monospace"/>
 
             <TextView
                 android:id="@+id/textViewDistancia"
@@ -49,12 +64,20 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="15dp"
-                android:text="DISTANCIA EN METROS" />
+                android:layout_marginTop="5dp"
+                android:text="@string/distancia_en_metros"
+                android:fontFamily="sans-serif-light"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/azul_oscuro"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
                 android:orientation="vertical">
 
@@ -63,9 +86,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textColor="@color/verde"
                     android:textSize="35dp"
                     android:visibility="gone"
-                    android:text="Abierto" />
+                    android:text="@string/abierto"
+                    android:fontFamily="sans-serif-smallcaps" />
 
                 <TextView
                     android:id="@+id/textViewCerrado"
@@ -73,8 +98,10 @@
                     android:layout_height="wrap_content"
                     android:textSize="35dp"
                     android:gravity="center"
+                    android:textColor="@color/rojo"
                     android:visibility="gone"
-                    android:text="Cerrado" />
+                    android:text="@string/cerrado"
+                    android:fontFamily="sans-serif-smallcaps" />
 
                 <TextView
                     android:id="@+id/textViewHoraCierre"
@@ -82,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="visible"
-                    android:text="HORA CIERRE" />
+                    android:text="@string/hora_cierre" />
 
                 <TextView
                     android:id="@+id/textViewHoraApertura"
@@ -90,20 +117,31 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
-                    android:text="HORA APERTURA" />
-
-
-
+                    android:text="@string/hora_apertura" />
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/azul_oscuro"/>
 
             <TextView
                 android:id="@+id/textViewContacto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:text="CONTACTO" />
+                android:text="@string/contacto"
+                android:fontFamily="sans-serif-light"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/azul_oscuro"/>
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -119,8 +157,12 @@
                         android:id="@+id/textViewTituloTabla"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
-                        android:text="Comidas Disponibles" />
+                        android:gravity="center"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:background="@color/verde"
+                        android:text="@string/comidas_disponibles"
+                        android:fontFamily="sans-serif"/>
                 </TableRow>
 
                 <TableRow
@@ -133,8 +175,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="HAMBURGUESAS" />
+                        android:textSize="20dp"
+                        android:text="@string/hamburguesas"
+                        android:fontFamily="casual"/>
                 </TableRow>
 
                 <TableRow
@@ -147,8 +190,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="PANCHOS" />
+                        android:textSize="20dp"
+                        android:text="@string/panchos"
+                        android:fontFamily="casual" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
@@ -160,8 +204,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="CHORIPAN" />
+                        android:textSize="20dp"
+                        android:text="@string/choripan"
+                        android:fontFamily="casual"/>
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
@@ -173,8 +218,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="MILANESA" />
+                        android:textSize="20dp"
+                        android:text="@string/milanesa"
+                        android:fontFamily="casual" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
@@ -186,8 +232,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="PIZZA" />
+                        android:textSize="20dp"
+                        android:text="@string/pizza"
+                        android:fontFamily="casual" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
@@ -199,8 +246,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="BONDIOLA" />
+                        android:textSize="20dp"
+                        android:text="@string/bondiola"
+                        android:fontFamily="casual" />
                 </TableRow>
                 <TableRow
                     android:layout_width="match_parent"
@@ -212,23 +260,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="25dp"
-                        android:text="PAPAS FRITAS" />
+                        android:textSize="20dp"
+                        android:text="@string/papas_fritas"
+                        android:fontFamily="casual" />
                 </TableRow>
 
             </TableLayout>
 
             <Button
                 android:id="@+id/buttonLlevame"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="56dp"
-                android:text="Llevame!" />
+                android:layout_gravity="center"
+                android:text="@string/llevame"
+                android:textColor="@color/clarito"
+                android:background="@color/azul_oscuro"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <Button
                 android:id="@+id/buttonVolver"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="53dp"
-                android:text="Volver" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@color/azul_oscuro"
+                android:text="@string/volver"
+                android:textColor="@color/clarito" />
         </LinearLayout>
     </ScrollView>
 
