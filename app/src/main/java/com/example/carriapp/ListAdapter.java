@@ -17,11 +17,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<CarribarView> datos;
     private LayoutInflater inflater;
     private Context context;
+    final ListAdapter.OnItemClickListener listener;
 
-    public ListAdapter(List<CarribarView> lista, Context context){
+    public interface OnItemClickListener{
+        void onItemClick(CarribarView item);
+    }
+
+    public ListAdapter(List<CarribarView> lista, Context context, ListAdapter.OnItemClickListener listener){
         this.inflater = LayoutInflater.from(context);
         this.context=context;
         this.datos=lista;
+        this.listener=listener;
     }
 
     @Override
@@ -59,6 +65,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             nombre.setText(item.getNombre());
             direccion.setText(item.getDireccion());
             horaCierre.setText(item.getHoraCierre() + " hs.");
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 

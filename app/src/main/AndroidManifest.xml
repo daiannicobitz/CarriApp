@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarriApp">
         <activity
+            android:name=".VerCarribarActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListaCarribaresActivity"
             android:exported="false" />
         <activity
@@ -25,13 +28,11 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AgregarCarribarActivity"></activity>
-        <activity android:name=".VerCarribarActivity"></activity>
-        <activity android:name=".MapasActivity"></activity>
+        <activity android:name=".AgregarCarribarActivity" />
+        <activity android:name=".MapasActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
