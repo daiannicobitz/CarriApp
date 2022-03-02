@@ -11,12 +11,14 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.carriapp.Config.Constantes;
 import com.example.carriapp.Config.DataConverter;
@@ -32,6 +34,7 @@ import java.util.regex.Pattern;
 public class AgregarCarribarActivity extends AppCompatActivity {
 
     String textoNombre,textoDireccion,textoHoraApertura,textoHoraCierre,textoContacto;
+    TextView textToolBar;
     Boolean hamburguesa,choripan,papasFritas,pizza,pancho,milanesa,bondiola;
     Button botonAgregar, botonTomarFoto, botonVolver;
     Bitmap bitmapImagen;
@@ -39,11 +42,17 @@ public class AgregarCarribarActivity extends AppCompatActivity {
     ImageView imageView;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     AppDataBase db;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        textToolBar = findViewById(R.id.textToolBar);
+        textToolBar.setText("Agregar un carribar");
 
         db = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, Constantes.BD_NAME)
                 .allowMainThreadQueries()
@@ -114,6 +123,30 @@ public class AgregarCarribarActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void ClickMenu(View view) {
+        MainActivity.openDrawer(drawerLayout);
+    }
+
+    public void ClickLogo(View view) {
+        MainActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        MainActivity.redirectActivity(this, MainActivity.class);
+    }
+
+    public void ClickAddCarribar(View view) {
+        MainActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickVerCarribar(View view) {
+        MainActivity.redirectActivity(this, VerCarribarActivity.class);
+    }
+
+    public void ClickSalir(View view) {
+        MainActivity.salir(this);
     }
 
     private void createNotificationChannel() {
