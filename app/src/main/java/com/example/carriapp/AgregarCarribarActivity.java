@@ -97,6 +97,9 @@ public class AgregarCarribarActivity extends AppCompatActivity {
                         i.setAction (MyReceiver1.EVENTO_01);
                         sendBroadcast(i);
 
+                        Intent i1 = new Intent(v.getContext(), MainActivity.class);
+                        startActivity(i1);
+
                     }else{
                         System.out.println("Datos mal formateados");
                     }
