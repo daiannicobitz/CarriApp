@@ -136,7 +136,7 @@
                         android:background="@color/clarito"
                         android:textColor="@color/azul_oscuro"
                         android:minHeight="48dp"
-                        android:text="@string/hamburguesa" />
+                        android:text="@string/hamburguesas" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayChoripan"
@@ -177,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="@string/pancho" />
+                        android:text="@string/panchos" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayMilanesa"
