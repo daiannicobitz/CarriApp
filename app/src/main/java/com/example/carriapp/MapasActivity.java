@@ -9,10 +9,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -38,12 +40,19 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
     private FusedLocationProviderClient fusedLocationClient;
     Double latitudUbicacionActual;
     Double longitudUbicacionActual;
+    DrawerLayout drawerLayout;
+    TextView textToolBar;
 
     @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
+        textToolBar = findViewById(R.id.textToolBar);
+        textToolBar.setText("Mapa");
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getDirection = findViewById(R.id.btnGetDirection);
@@ -156,6 +165,24 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
             Toast.makeText(MapasActivity.this , "No tiene permiso para obtener la ubicacion actual", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void ClickMenu(View view) { MainActivity.openDrawer(drawerLayout); }
+
+    public void ClickLogo(View view) {
+        MainActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        MainActivity.redirectActivity(this, MainActivity.class);
+    }
+
+    public void ClickAddCarribar(View view) { MainActivity.redirectActivity(this, AgregarCarribarActivity.class); }
+
+    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, VerCarribarActivity.class); }
+
+    public void ClickSalir(View view) {
+        MainActivity.salir(this);
     }
 
 

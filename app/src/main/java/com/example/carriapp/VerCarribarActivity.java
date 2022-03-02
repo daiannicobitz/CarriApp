@@ -118,9 +118,7 @@ public class VerCarribarActivity extends AppCompatActivity {
 
     public void ClickAddCarribar(View view) { MainActivity.redirectActivity(this, AgregarCarribarActivity.class); }
 
-    public void ClickVerCarribar(View view) {
-        MainActivity.closeDrawer(drawerLayout);
-    }
+    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, VerCarribarActivity.class); }
 
     public void ClickSalir(View view) {
         MainActivity.salir(this);

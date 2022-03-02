@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
-            android:background="#636363"/>
+            android:background="@color/azul_oscuro"/>
     </LinearLayout>
 
     <LinearLayout
@@ -104,29 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/ver_carribares_abiertos"
-            android:padding="12dp"
-            android:layout_marginStart="16dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:onClick="ClickAyuda">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_help"
-            android:layout_marginStart="16dp"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/ayuda"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
 
