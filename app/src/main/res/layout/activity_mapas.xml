@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapasActivity"
-    android:orientation="vertical">
+    tools:context=".MapasActivity">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mapa"
-        tools:context=".MapasActivity"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_weight="1"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnGetDirection"
-        android:text="Get Direction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <include
+            layout="@layout/activity_toolbar"/>
 
-</LinearLayout>
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mapa"
+            tools:context=".MapasActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnGetDirection"
+            android:text="Get Direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+</android.support.v4.widget.DrawerLayout>
 

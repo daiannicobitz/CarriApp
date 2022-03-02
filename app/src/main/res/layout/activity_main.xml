@@ -16,7 +16,6 @@
         <include
             layout="@layout/activity_toolbar"/>
 
-
         <ImageView
             android:id="@+id/tenedor_y_cuchillo"
             android:layout_width="169dp"
@@ -33,22 +32,21 @@
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/choripan" />
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Bienvenidos a"
-                android:textSize="35dp" />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Bienvenidos a"
+            android:textSize="35dp" />
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="CarriApp"
-                android:textSize="40dp" />
-
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="CarriApp"
+            android:textSize="40dp" />
     </LinearLayout>
 
     <RelativeLayout
