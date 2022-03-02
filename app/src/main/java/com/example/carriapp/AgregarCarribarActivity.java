@@ -49,7 +49,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_carribar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout_add_carribar);
 
         textToolBar = findViewById(R.id.textToolBar);
         textToolBar.setText("Agregar un carribar");
@@ -145,7 +145,7 @@ public class AgregarCarribarActivity extends AppCompatActivity {
     }
 
     public void ClickVerCarribar(View view) {
-        MainActivity.redirectActivity(this, VerCarribarActivity.class);
+        MainActivity.redirectActivity(this, ListaCarribaresActivity.class);
     }
 
     public void ClickSalir(View view) {

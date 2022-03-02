@@ -31,7 +31,7 @@ public class ListaCarribaresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout_ver_carribar);
 
         textToolBar = findViewById(R.id.textToolBar);
         textToolBar.setText("Carribares abiertos");

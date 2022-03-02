@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout_maps"
     tools:context=".MapasActivity">
 
     <LinearLayout
@@ -27,6 +28,15 @@
             android:text="Obtener Direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include layout="@layout/activity_main_nav_drawer" />
+    </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
 
