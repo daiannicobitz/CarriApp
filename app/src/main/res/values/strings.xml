@@ -7,4 +7,5 @@
     <string name="agregar_carribar">Agregar Carribar</string>
     <string name="salir">Salir</string>
     <string name="menu_principal">Menu principal</string>
+    <string name="lista_carribares">Lista carribares</string>
 </resources>
