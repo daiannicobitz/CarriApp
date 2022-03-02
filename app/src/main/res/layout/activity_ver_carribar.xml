@@ -88,7 +88,7 @@
                     android:gravity="center"
                     android:textColor="@color/verde"
                     android:textSize="35dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:text="@string/abierto"
                     android:fontFamily="sans-serif-smallcaps" />
 
@@ -151,7 +151,8 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:background="@color/verde">
 
                     <TextView
                         android:id="@+id/textViewTituloTabla"
@@ -160,7 +161,7 @@
                         android:gravity="center"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:background="@color/verde"
+
                         android:text="@string/comidas_disponibles"
                         android:fontFamily="sans-serif"/>
                 </TableRow>
