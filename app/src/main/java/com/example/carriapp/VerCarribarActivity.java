@@ -8,6 +8,7 @@ import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -57,12 +58,19 @@ public class VerCarribarActivity extends AppCompatActivity {
     Float distancia;
     Location locationActual;
     Location locationCarri;
+    DrawerLayout drawerLayout;
+    TextView textToolBar;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_carribar);
+
+        drawerLayout = findViewById(R.id.drawer_layout_ver_unico_carribar);
+
+        textToolBar = findViewById(R.id.textToolBar);
+        textToolBar.setText("Carribar");
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         TextView textViewNombreCarribar = (TextView) findViewById(R.id.textViewNombre);
@@ -94,7 +102,26 @@ public class VerCarribarActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void ClickMenu(View view) {
+        MainActivity.openDrawer(drawerLayout);
+    }
+
+    public void ClickLogo(View view) {
+        MainActivity.closeDrawer(drawerLayout);
+    }
+
+    public void ClickHome(View view) {
+        MainActivity.redirectActivity(this, MainActivity.class);
+    }
+
+    public void ClickAddCarribar(View view) { MainActivity.redirectActivity(this, AgregarCarribarActivity.class); }
+
+    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, ListaCarribaresActivity.class); }
+
+    public void ClickSalir(View view) {
+        MainActivity.salir(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -179,7 +206,6 @@ public class VerCarribarActivity extends AppCompatActivity {
         LocalTime horaActual = LocalTime.parse(df.format(date)); //1 si horaApertura > horaCierre
 
         return horaActual.compareTo(horaApertura) == 1 && horaCierre.compareTo(horaActual) == 1;
-
     }
 
     public void obtenerDistancia(String latitudCarri, String longitudCarri){

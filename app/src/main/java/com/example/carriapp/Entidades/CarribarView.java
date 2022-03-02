@@ -30,11 +30,16 @@ public class CarribarView implements Serializable {
     @ColumnInfo(name = "hora_cierre")
     private String horaCierre;
 
-    public CarribarView( @NonNull String nombre, @NonNull String direccion, @NonNull String horaCierre) {
+    @NonNull
+    @ColumnInfo(name = "hora_apertura")
+    private String horaApertura;
+
+    public CarribarView( @NonNull String nombre, @NonNull String direccion, @NonNull String horaCierre , @NonNull String horaApertura) {
         //this.idCarribar = id;
         this.nombre = nombre;
         this.direccion = direccion;
         this.horaCierre = horaCierre;
+        this.horaApertura = horaApertura;
     }
     public long getIdCarribar() {
         return idCarribar;
@@ -69,4 +74,11 @@ public class CarribarView implements Serializable {
     }
 
 
+    public String getHoraApertura() {
+        return horaApertura;
+    }
+
+    public void setHoraApertura( String horaApertura) {
+        this.horaApertura = horaApertura;
+    }
 }

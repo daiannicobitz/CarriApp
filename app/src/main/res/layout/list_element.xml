@@ -68,6 +68,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Horario de cierre"
+                    android:visibility="visible"
+                    android:textSize="18dp"/>
+
+                <TextView
+                    android:id="@+id/textViewAbierto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Horario de cierre"
+                    android:visibility="gone"
                     android:textSize="18dp"/>
 
             </LinearLayout>

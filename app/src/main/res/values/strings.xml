@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">CarriApp</string>
     <string name="google_maps_key">AIzaSyApLOhLviIkETCALJ_tpsSt8X9NkJWMYPc</string>
+    <string name="agregar_un_carribar">Agregar un carribar</string>
+    <string name="ver_carribares_abiertos">Ver carribares abiertos</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="agregar_carribar">Agregar Carribar</string>
+    <string name="salir">Salir</string>
+    <string name="menu_principal">Menu principal</string>
+    <string name="lista_carribares">Lista carribares</string>
 </resources>
