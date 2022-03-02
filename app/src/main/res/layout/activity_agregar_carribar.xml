@@ -21,15 +21,39 @@
             <include
                 layout="@layout/activity_toolbar"/>
 
-            <ImageView
-            android:id="@+id/imageViewChoripan"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            app:srcCompat="@drawable/choripan"
-            tools:visibility="visible"
-            android:background="@color/rojo"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="center_horizontal"
+                android:background="@color/agua">
 
-            <TextView
+                <ImageView
+                    android:id="@+id/imageViewChoripan"
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/choripan_costado"
+                    android:layout_marginTop="15dp"/>
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/pancho" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/hamburguesa" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/pizza" />
+            </LinearLayout>
+
+            <!--<TextView
                 android:id="@+id/textViewAgregarCarri"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,7 +61,7 @@
                 android:padding="5dp"
                 android:textSize="30dp"
                 android:gravity="center"
-                android:background="@color/agua"/>
+                android:background="@color/agua"/>-->
 
             <EditText
                 android:id="@+id/editTextNombre"
@@ -87,6 +111,7 @@
                 android:layout_height="wrap_content"
                 android:text="Menu"
                 android:textSize="25dp"
+                android:textColor="@color/azul_oscuro"
                 android:gravity="center"
                 android:background="@color/agua"/>
 
@@ -95,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="5dp"
-                android:background="@color/rojo"
+                android:background="@color/agua"
                 >
 
                 <LinearLayout
@@ -109,8 +134,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
+                        android:textColor="@color/azul_oscuro"
                         android:minHeight="48dp"
-                        android:text="HAMBURGUESA" />
+                        android:text="@string/hamburguesa" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayChoripan"
@@ -118,7 +144,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="CHORIPAN" />
+                        android:textColor="@color/azul_oscuro"
+                        android:text="@string/choripan" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayPizza"
@@ -126,7 +153,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="PIZZA" />
+                        android:text="@string/pizza" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayPapasFritas"
@@ -134,7 +161,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="PAPAS FRITAS" />
+                        android:textColor="@color/azul_oscuro"
+                        android:text="@string/papas_fritas" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -149,7 +177,7 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="PANCHO" />
+                        android:text="@string/pancho" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayMilanesa"
@@ -157,7 +185,8 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="MILANESA" />
+                        android:textColor="@color/azul_oscuro"
+                        android:text="@string/milanesa" />
 
                     <CheckBox
                         android:id="@+id/checkBoxHayBondiola"
@@ -165,19 +194,14 @@
                         android:layout_height="wrap_content"
                         android:background="@color/clarito"
                         android:minHeight="48dp"
-                        android:text="BONDIOLA" />
+                        android:textColor="@color/azul_oscuro"
+                        android:text="@string/bondiola" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/clarito">
                     </TextView>
-
-                    <RadioButton
-                        android:id="@+id/radioButtonUnDia"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Solo por hoy" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -198,7 +222,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tomar Foto"
-                android:background="@color/rojo"/>
+                android:textColor="@color/clarito"
+                android:background="@color/celeste_oscuro"/>
 
             <ImageView
                 android:id="@+id/imageViewFotoTomada"
@@ -211,14 +236,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Agregar Carribar"
-                android:background="@color/rojo"/>
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/clarito"
+                android:background="@color/azul_oscuro"/>
 
             <Button
                 android:id="@+id/buttonCancelar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Cancelar"
-                android:background="@color/azul_oscuro"/>
+                android:textColor="@color/clarito"
+                android:background="@color/rojo"/>
         </LinearLayout>
     </ScrollView>
 

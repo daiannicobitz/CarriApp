@@ -12,4 +12,11 @@
     <string name="carri_app">Carri App</string>
     <string name="bienvenidos_a">Bienvenidos a</string>
     <string name="carriapp">CarriApp</string>
+    <string name="hamburguesa">HAMBURGUESA</string>
+    <string name="choripan">CHORIPAN</string>
+    <string name="pizza">PIZZA</string>
+    <string name="papas_fritas">PAPAS FRITAS</string>
+    <string name="pancho">PANCHO</string>
+    <string name="milanesa">MILANESA</string>
+    <string name="bondiola">BONDIOLA</string>
 </resources>
