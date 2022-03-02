@@ -32,7 +32,7 @@
             android:layout_height="175dp"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/tenedor_y_cuchillo" />
+            app:srcCompat="@drawable/t_y_c" />
 
         <ImageView
             android:id="@+id/choripan"
@@ -40,7 +40,7 @@
             android:layout_height="152dp"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/choripan" />
+            app:srcCompat="@drawable/choripan" />
 
         <TextView
             android:id="@+id/textView1"
