@@ -67,7 +67,7 @@ public class VerCarribarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_carribar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout_ver_unico_carribar);
 
         textToolBar = findViewById(R.id.textToolBar);
         textToolBar.setText("Carribar");
@@ -118,7 +118,7 @@ public class VerCarribarActivity extends AppCompatActivity {
 
     public void ClickAddCarribar(View view) { MainActivity.redirectActivity(this, AgregarCarribarActivity.class); }
 
-    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, VerCarribarActivity.class); }
+    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, ListaCarribaresActivity.class); }
 
     public void ClickSalir(View view) {
         MainActivity.salir(this);

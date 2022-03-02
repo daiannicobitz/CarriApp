@@ -49,7 +49,7 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapas);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout_maps);
 
         textToolBar = findViewById(R.id.textToolBar);
         textToolBar.setText("Mapa");
@@ -184,7 +184,7 @@ public class MapasActivity extends AppCompatActivity implements OnMapReadyCallba
 
     public void ClickAddCarribar(View view) { MainActivity.redirectActivity(this, AgregarCarribarActivity.class); }
 
-    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, VerCarribarActivity.class); }
+    public void ClickVerCarribar(View view) { MainActivity.redirectActivity(this, ListaCarribaresActivity.class); }
 
     public void ClickSalir(View view) {
         MainActivity.salir(this);
