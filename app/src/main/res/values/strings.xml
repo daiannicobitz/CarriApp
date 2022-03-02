@@ -32,4 +32,5 @@
     <string name="cerrado">Cerrado</string>
     <string name="abierto">Abierto</string>
     <string name="distancia_en_metros">DISTANCIA EN METROS</string>
+    <string name="obtener_direccion">Obtener Direccion</string>
 </resources>
