@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.CarriApp">
+        android:theme="@style/Theme.CarriApp.NoActionBar">
+
         <activity
             android:name=".VerCarribarActivity"
             android:exported="false" />
