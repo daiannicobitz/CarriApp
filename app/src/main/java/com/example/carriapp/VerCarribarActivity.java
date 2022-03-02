@@ -206,7 +206,6 @@ public class VerCarribarActivity extends AppCompatActivity {
         LocalTime horaActual = LocalTime.parse(df.format(date)); //1 si horaApertura > horaCierre
 
         return horaActual.compareTo(horaApertura) == 1 && horaCierre.compareTo(horaActual) == 1;
-
     }
 
     public void obtenerDistancia(String latitudCarri, String longitudCarri){

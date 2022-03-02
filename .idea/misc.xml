@@ -4,31 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_agregar_carribar.xml" value="0.14175724637681159" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_lista_carribares.xml" value="0.1078125" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_mapas.xml" value="0.1" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/activity_ver_carribar.xml" value="0.4" />
+        <entry key="..\:/Rama/FACULTAD/4- App Moviles/Laboratorios y tp/CarriApp/app/src/main/res/layout/list_element.xml" value="0.2" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/drawable/ic_carriimagen.xml" value="0.2203125" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_agregar_carribar.xml" value="0.18958333333333333" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_descriptionn.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_recyclerview.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_recyclerview.xml" value="0.1" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_ver_carribar.xml" value="0.2" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/CarriApp/app/src/main/res/layout/list_element.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.247" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/drawable/ic_carriimagen.xml" value="0.1865" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.247" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_agregar_carribar.xml" value="0.1" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_ayuda.xml" value="0.22708333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_drawer.xml" value="0.18958333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_drawerlayout.xml" value="0.1" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_main.xml" value="0.18958333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_main_nav_drawer.xml" value="0.22727272727272727" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_mapas.xml" value="0.18958333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_recyclerview.xml" value="0.24114583333333334" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_toolbar.xml" value="0.24114583333333334" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/activity_ver_carribar.xml" value="0.21467391304347827" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/app_bar_drawer.xml" value="0.18958333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/content_drawer.xml" value="0.18958333333333333" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/list_element.xml" value="0.17889492753623187" />
-        <entry key="..\:/Users/mati9/AndroidStudioProjects/CarriApp/app/src/main/res/layout/nav_header_drawer.xml" value="0.18958333333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
