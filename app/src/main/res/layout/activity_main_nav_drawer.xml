@@ -16,21 +16,21 @@
             android:layout_height="120dp"
             android:layout_margin="16dp"
             android:onClick="ClickLogo"
-            android:src="@drawable/t_y_c"/>
+            android:src="@drawable/choripan_costado"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Carri App"
+            android:text="@string/carriapp"
+            android:textColor="@color/clarito"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:textAlignment="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="La mejor aplicacion para encontrar tu carribar preferido"
-            android:textStyle="bold"
+            android:text="@string/la_mejor_aplicacion_para_encontrar_tu_carribar_preferido"
+            android:textColor="@color/clarito"
             android:textAlignment="center"/>
 
         <View
@@ -59,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Home"
+            android:textColor="@color/celeste_oscuro"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
 
@@ -83,6 +84,7 @@
             android:layout_weight="1"
             android:text="@string/agregar_un_carribar"
             android:padding="12dp"
+            android:textColor="@color/celeste_oscuro"
             android:layout_marginStart="16dp"/>
 
     </LinearLayout>
@@ -106,30 +108,34 @@
             android:layout_weight="1"
             android:text="@string/ver_carribares_abiertos"
             android:padding="12dp"
+            android:textColor="@color/celeste_oscuro"
             android:layout_marginStart="16dp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:onClick="ClickSalir">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:onClick="ClickSalir"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_exit_to_app"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="16dp"
+            android:paddingBottom="5dp"
+            android:src="@drawable/ic_exit_to_app" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:text="@string/salir"
             android:padding="12dp"
-            android:layout_marginStart="16dp"/>
+            android:text="@string/salir"
+            android:textColor="@color/celeste_oscuro" />
     </LinearLayout>
 
 </LinearLayout>

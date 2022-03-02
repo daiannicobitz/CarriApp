@@ -8,4 +8,8 @@
     <string name="salir">Salir</string>
     <string name="menu_principal">Menu principal</string>
     <string name="lista_carribares">Lista carribares</string>
+    <string name="la_mejor_aplicacion_para_encontrar_tu_carribar_preferido">La mejor aplicacion para encontrar tu carribar preferido</string>
+    <string name="carri_app">Carri App</string>
+    <string name="bienvenidos_a">Bienvenidos a</string>
+    <string name="carriapp">CarriApp</string>
 </resources>

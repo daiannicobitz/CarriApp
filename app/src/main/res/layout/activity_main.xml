@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:id="@+id/drawer_layout"
     tools:context=".MainActivity">
 
@@ -12,41 +11,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
         <include
             layout="@layout/activity_toolbar"/>
 
-        <ImageView
-            android:id="@+id/tenedor_y_cuchillo"
-            android:layout_width="169dp"
-            android:layout_height="175dp"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/t_y_c" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/clarito">
 
-        <ImageView
-            android:id="@+id/choripan"
-            android:layout_width="166dp"
-            android:layout_height="152dp"
-            android:layout_gravity="center"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/choripan" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Bienvenidos a"
-            android:textSize="35dp" />
+            <ImageView
+                android:id="@+id/tenedor_y_cuchillo"
+                android:layout_width="169dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/chori_color" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="CarriApp"
-            android:textSize="40dp" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/celeste_oscuro"
+                android:text="@string/bienvenidos_a"
+                android:textSize="35dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/carriapp"
+                android:textColor="@color/celeste_oscuro"
+                android:textSize="40dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <RelativeLayout
